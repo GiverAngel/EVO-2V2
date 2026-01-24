@@ -1,77 +1,84 @@
+/* Reset and Body */
 body {
-    margin: 0;
-    background: black;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0a0a0a;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-/* 🔥 POP GLOW TITLE */
-.title {
-    font-size: 80px;
-    margin-top: 40px;
-    color: white;
+/* Glowing Text - Pop-up Once */
+.glow-text {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #00ffff;
+  text-shadow: 0 0 0 #00ffff;
+  opacity: 0;
+  animation: glow-pop 1.5s forwards;
+  margin-top: 40px;
+}
+
+@keyframes glow-pop {
+  0% {
     opacity: 0;
-    transform: scale(0.5);
-    animation: popGlow 1.2s ease-out forwards;
-    text-shadow: 0 0 10px white, 0 0 20px white, 0 0 40px white;
+    text-shadow: 0 0 0 #00ffff;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
+  }
 }
 
-@keyframes popGlow {
-    0% {
-        opacity: 0;
-        transform: scale(0.5);
-        text-shadow: none;
-    }
-    60% {
-        opacity: 1;
-        transform: scale(1.2);
-        text-shadow: 0 0 20px white, 0 0 40px white, 0 0 80px white;
-    }
-    100% {
-        transform: scale(1);
-        text-shadow: 0 0 10px white, 0 0 20px white, 0 0 40px white;
-    }
-}
-
-.logo {
-    width: 60%;
-    max-width: 700px;
-    margin: 20px auto;
-}
-
-.section {
-    margin: 60px 20px;
-}
-
-h2 {
-    font-size: 40px;
-    text-shadow: 0 0 10px white;
-}
-
-.team-list {
-    font-size: 20px;
-    line-height: 35px;
-}
-
+/* League Table */
 table {
-    margin: auto;
-    border-collapse: collapse;
-    width: 90%;
-    max-width: 800px;
+  border-collapse: collapse;
+  margin: 30px 0;
+  width: 90%;
+  max-width: 400px;
 }
 
 th, td {
-    border: 1px solid white;
-    padding: 10px;
+  border: 1px solid #00ffff;
+  padding: 10px;
+  font-size: 1.2em;
 }
 
 th {
-    background: #111;
+  background-color: #00ffff;
+  color: #000;
 }
 
+td {
+  background-color: #111;
+}
+
+/* Logo */
+.logo {
+  width: 200px;
+  max-width: 80%;
+  margin: 20px 0;
+}
+
+/* Footer */
 footer {
-    margin: 80px 0 40px;
-    font-size: 22px;
-    text-shadow: 0 0 10px white;
+  margin-top: 40px;
+  font-size: 1em;
+  color: #aaa;
+}
+
+footer a {
+  color: #00ffff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
