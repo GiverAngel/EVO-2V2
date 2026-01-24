@@ -1,3 +1,100 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #000; /* Black background */
+  color: #fff; /* White text */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  background: rgba(0,0,0,0.8);
+  padding: 10px;
+  border-radius: 0 10px 10px 0;
+}
+
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+  margin: 10px 0;
+  padding: 5px 10px;
+  transition: all 0.2s;
+}
+
+.sidebar a:hover {
+  background-color: #fff;
+  color: #000;
+  border-radius: 5px;
+}
+
+/* Glowing Header */
+.glow-text {
+  font-size: 3rem;
+  color: #fff;
+  opacity: 0;
+  animation: glowPop 1.2s forwards;
+  text-shadow: 0 0 0 #fff;
+  margin-top: 20px;
+}
+
+@keyframes glowPop {
+  0% { opacity: 0; transform: scale(0.7); text-shadow: 0 0 0 #fff; }
+  60% { opacity: 1; transform: scale(1.1); text-shadow: 0 0 30px #fff, 0 0 60px #fff; }
+  100% { opacity: 1; transform: scale(1); text-shadow: 0 0 15px #fff, 0 0 30px #fff; }
+}
+
+/* Sections */
+section {
+  margin: 30px 0;
+  width: 90%;
+  max-width: 500px;
+}
+
+section h2 {
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  color: #fff;
+  text-shadow: 0 0 5px #fff;
+}
+
+/* Team Cards */
+.team-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.team-card {
+  background: #111;
+  border-left: 5px solid #fff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+  font-size: 1.2rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.team-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.5);
+}
+
 /* Player list styling */
 .player-list {
   list-style: none;
@@ -21,4 +118,26 @@
 .player-list li:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 12px rgba(255,255,255,0.4);
+}
+
+/* Footer */
+footer {
+  margin-top: 40px;
+  font-size: 0.95rem;
+  color: #aaa;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media(max-width: 450px) {
+  .glow-text { font-size: 2rem; }
+  .team-card { font-size: 1rem; padding: 10px; }
 }
