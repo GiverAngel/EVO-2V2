@@ -1,116 +1,109 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EVO 2V2</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div class="announcement">
-    EVO 2V2 ska nu börja i februari, alla spelare som kan inte spela i februari ska inte få poäng.
-    Detta kan leda till att du som inte spelar blir sist i ligatabellen, lycka till!<br>
-    — Ewan Ibrahim
+<div class="announcement">
+EVO 2V2 ska nu börja i februari, alla spelare som inte kan spela i februari ska inte få poäng. Detta kan leda till att du som inte spelar blir sist i ligatabellen, lycka till! <br>
+— Ewan Ibrahim
+</div>
+
+<header>
+  <h1 class="glow-title">EVO 2V2</h1>
+</header>
+
+<nav class="sidebar">
+  <a href="#matcher">Matcher</a>
+  <a href="#ligatabell">Ligatabellen</a>
+  <a href="#resultat">Resultat</a>
+  <a href="#spelare">Spelare</a>
+</nav>
+
+<main>
+
+<section id="matcher">
+  <h2>Matcher</h2>
+
+  <div class="match-card">
+    Omar & Qusai VS Malik & Mustafa <br>
+    📍 Bodavallen — 31 Januari <br>
+    <strong>Resultat: 3–0 (Omar & Qusai vann)</strong>
   </div>
 
-  <header>
-    <h1 class="glow-text">EVO 2V2</h1>
-  </header>
+  <div class="match-card">
+    Malik & Mustafa VS Fabbe & Mikael <br>
+    📍 Bodavallen — 31 Januari <br>
+    <strong>Resultat: 1–3 (Fabbe & Mikael vann)</strong>
+  </div>
 
-  <nav class="section-nav">
-    <a href="#matcher">Matcher</a>
-    <a href="#ligatabellen">Ligatabellen</a>
-    <a href="#resultat">Resultat</a>
-    <a href="#spelare">Spelare</a>
-  </nav>
+  <div class="match-card">
+    Fabbe & Mikael VS Omar & Qusai <br>
+    📍 Bodavallen — 31 Januari 14:40 <br>
+    <strong>Resultat: 3–0 (Fabbe & Mikael vann)</strong>
+  </div>
+</section>
 
-  <section id="matcher">
-    <h2>Matcher</h2>
+<section id="ligatabell">
+  <h2>Ligatabellen</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Lag</th><th>M</th><th>V</th><th>O</th><th>F</th><th>P</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Fabbe & Mikael</td><td>2</td><td>2</td><td>0</td><td>0</td><td>6</td></tr>
+      <tr><td>Omar & Qusai</td><td>2</td><td>1</td><td>0</td><td>1</td><td>3</td></tr>
+      <tr><td>Malik & Mustafa</td><td>2</td><td>0</td><td>0</td><td>2</td><td>0</td></tr>
 
-    <!-- MATCH 1 (NO TIME) -->
-    <div class="match-card">
-      <p class="teams">Omar & Qusai VS Malik & Mustafa</p>
-      <p class="location">📍 BODAVALLEN</p>
-      <p class="date">📅 31 Januari</p>
-    </div>
+      <tr><td>Alessio & Hayder</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>Adam & Yaser</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>Amedi & Abbas</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>Fode & Rida</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>Isac & Dzejlan</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>Berti & Albin</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>Mahammed & Bishaar</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>Edwin & Endi</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>Omar & Muhsin</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    </tbody>
+  </table>
+</section>
 
-    <!-- MATCH 2 -->
-    <div class="match-card">
-      <p class="teams">Malik & Mustafa VS Fabbe & Mikael</p>
-      <p class="location">📍 BODAVALLEN</p>
-      <p class="date">📅 31 Januari</p>
-    </div>
+<section id="resultat">
+  <h2>Resultat</h2>
+  Fabbe & Mikael 3–0 Omar & Qusai <br>
+  Omar & Qusai 3–0 Malik & Mustafa <br>
+  Fabbe & Mikael 3–1 Malik & Mustafa
+</section>
 
-    <!-- MATCH 3 (HAS TIME) -->
-    <div class="match-card">
-      <p class="teams">Fabbe & Mikael VS Omar & Qusai</p>
-      <p class="location">📍 BODAVALLEN</p>
-      <p class="date">📅 31 Januari 14:40</p>
-    </div>
+<section id="spelare">
+  <h2>Spelare</h2>
+  Alessio & Hayder<br>
+  Adam & Yaser<br>
+  Omar & Qusai<br>
+  Amedi & Abbas<br>
+  Fode & Rida<br>
+  Isac & Dzejlan<br>
+  Berti & Albin<br>
+  Mahammed & Bishaar<br>
+  Edwin & Endi<br>
+  Omar & Muhsin<br>
+  Fabbe & Mikael<br>
+  Malik & Mustafa
+</section>
 
-  </section>
+</main>
 
-  <section id="ligatabellen">
-    <h2>Ligatabellen</h2>
-    <div class="table-container">
-      <table class="league-table">
-        <thead>
-          <tr>
-            <th>Lag</th>
-            <th>M</th>
-            <th>V</th>
-            <th>O</th>
-            <th>F</th>
-            <th>P</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Alessio & Hayder</td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Adam & Yaser</td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Omar & Qusai</td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Amedi & Abbas</td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Fode & Rida</td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Isac & Dzejlan</td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Berti & Albin</td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Mahammed & Bishaar</td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Edwin & Endi</td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Omar & Muhsin</td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Malik & Mustafa</td><td></td><td></td><td></td><td></td><td></td></tr>
-          <tr><td>Fabbe & Mikael</td><td></td><td></td><td></td><td></td><td></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="resultat">
-    <h2>Resultat</h2>
-    <p>RESULTAT PÅ MATCHERNA KOMMER HÄR!</p>
-  </section>
-
-  <section id="spelare">
-    <h2>Spelare</h2>
-    <ul class="player-list">
-      <li>Alessio & Hayder</li>
-      <li>Adam & Yaser</li>
-      <li>Omar & Qusai</li>
-      <li>Amedi & Abbas</li>
-      <li>Fode & Rida</li>
-      <li>Isac & Dzejlan</li>
-      <li>Berti & Albin</li>
-      <li>Mahammed & Bishaar</li>
-      <li>Edwin & Endi</li>
-      <li>Omar & Muhsin</li>
-      <li>Malik & Mustafa</li>
-      <li>Fabbe & Mikael</li>
-    </ul>
-  </section>
-
-  <footer>
-    <p>Följ vår TikTok @evosturneringar</p>
-    <p>EVO 2V2 av Evos Turneringar</p>
-  </footer>
+<footer>
+Följ vår TikTok @evosturneringar <br>
+EVO 2V2 av Evos Turneringar
+</footer>
 
 </body>
 </html>
