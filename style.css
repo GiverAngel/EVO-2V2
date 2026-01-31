@@ -17,24 +17,27 @@ body {
 /* TITLE */
 .glow-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 3.2rem;
-  letter-spacing: 5px;
+  font-size: 3rem;
+  letter-spacing: 4px;
   text-align: center;
-  margin: 15px 0 25px;
+  margin: 10px 0 25px;
   color: #fff;
-  opacity: 0;
-  transform: scale(0.7);
-  animation: titlePop 1s ease forwards;
+
+  /* CLEAN sharp glow */
   text-shadow:
-    0 0 5px #fff,
-    0 0 10px #fff,
-    0 0 20px #ffffffaa;
+    0 0 2px #fff,
+    0 0 6px #fff,
+    0 0 12px rgba(255,255,255,0.7);
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: titleReveal 0.8s ease forwards;
 }
 
-@keyframes titlePop {
+@keyframes titleReveal {
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
   }
 }
 
