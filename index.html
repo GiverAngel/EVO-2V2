@@ -19,6 +19,8 @@
       --red-light: #ff2148;
       --white: #ffffff;
       --black: #090909;
+      --blue: #0057ff;
+
       --panel: rgba(255, 255, 255, 0.88);
       --border: rgba(230, 0, 35, 0.25);
       --shadow: 0 0 24px rgba(230, 0, 35, 0.16);
@@ -32,6 +34,7 @@
     body {
       margin: 0;
       min-height: 100vh;
+
       color: var(--black);
 
       background:
@@ -51,22 +54,29 @@
       overflow-x: hidden;
     }
 
-    /* MOVING TRIANGLES */
+    /* =====================================
+       MOVING TRIANGLE BACKGROUND
+    ===================================== */
 
     #particles {
       position: fixed;
       inset: 0;
       z-index: -1;
+
       overflow: hidden;
       pointer-events: none;
     }
 
     .triangle {
       position: absolute;
+
       width: 0;
       height: 0;
+
       opacity: 0.25;
+
       filter: drop-shadow(0 0 14px currentColor);
+
       animation: floatTriangle linear infinite;
     }
 
@@ -74,6 +84,7 @@
       border-left: 24px solid transparent;
       border-right: 24px solid transparent;
       border-bottom: 42px solid var(--red);
+
       color: var(--red);
     }
 
@@ -81,7 +92,9 @@
       border-left: 30px solid transparent;
       border-right: 30px solid transparent;
       border-bottom: 52px solid #ffffff;
+
       color: #ffffff;
+
       opacity: 0.7;
 
       filter: drop-shadow(
@@ -105,7 +118,9 @@
 
     }
 
-    /* TOP */
+    /* =====================================
+       TOP
+    ===================================== */
 
     .top-line {
       height: 7px;
@@ -122,7 +137,9 @@
 
     header {
       text-align: center;
+
       padding: 42px 20px 28px;
+
       position: relative;
     }
 
@@ -132,9 +149,13 @@
       color: var(--red);
 
       font-family: "Orbitron", sans-serif;
+
       font-size: clamp(2.2rem, 8vw, 5.8rem);
+
       font-weight: 800;
+
       letter-spacing: 0.08em;
+
       text-transform: uppercase;
 
       text-shadow:
@@ -147,29 +168,43 @@
       margin: 10px 0 0;
 
       color: #5c5c5c;
+
       font-size: 1.05rem;
+
       letter-spacing: 0.25em;
+
       text-transform: uppercase;
     }
 
-    /* LAYOUT */
+    /* =====================================
+       LAYOUT
+    ===================================== */
 
     .layout {
       display: flex;
+
       width: min(1400px, 100%);
+
       margin: 0 auto;
+
       padding: 0 20px 60px;
+
       gap: 24px;
+
       align-items: flex-start;
     }
 
-    /* SIDEBAR */
+    /* =====================================
+       SIDEBAR
+    ===================================== */
 
     .sidebar {
       position: sticky;
+
       top: 18px;
 
       width: 230px;
+
       flex: 0 0 230px;
 
       padding: 18px;
@@ -177,7 +212,9 @@
       background: rgba(255, 255, 255, 0.92);
 
       border: 1px solid var(--border);
+
       border-left: 5px solid var(--red);
+
       border-radius: 16px;
 
       box-shadow: var(--shadow);
@@ -189,7 +226,9 @@
       color: var(--red);
 
       font-family: "Orbitron", sans-serif;
+
       font-size: 1.1rem;
+
       letter-spacing: 0.08em;
     }
 
@@ -197,16 +236,21 @@
       display: block;
 
       margin: 9px 0;
+
       padding: 13px 14px;
 
       color: #171717;
+
       text-decoration: none;
 
       font-family: "Orbitron", sans-serif;
+
       font-size: 0.83rem;
+
       font-weight: 700;
 
       border: 1px solid transparent;
+
       border-radius: 10px;
 
       transition: 0.25s ease;
@@ -214,9 +258,11 @@
 
     .nav-link:hover,
     .nav-link:focus {
+
       color: var(--red);
 
       border-color: var(--red);
+
       background: #fff2f4;
 
       box-shadow: 0 0 14px rgba(230, 0, 35, 0.2);
@@ -224,10 +270,13 @@
       transform: translateX(4px);
     }
 
-    /* SECTIONS */
+    /* =====================================
+       SECTIONS
+    ===================================== */
 
     main {
       min-width: 0;
+
       flex: 1;
     }
 
@@ -235,11 +284,13 @@
       scroll-margin-top: 20px;
 
       margin-bottom: 28px;
+
       padding: clamp(20px, 4vw, 34px);
 
       background: var(--panel);
 
       border: 1px solid var(--border);
+
       border-radius: 18px;
 
       box-shadow: var(--shadow);
@@ -249,6 +300,7 @@
 
     .section-heading {
       margin: 0 0 20px;
+
       padding-bottom: 12px;
 
       border-bottom: 2px solid rgba(230, 0, 35, 0.15);
@@ -256,18 +308,24 @@
       color: var(--red);
 
       font-family: "Orbitron", sans-serif;
+
       font-size: clamp(1.35rem, 3vw, 2rem);
 
       letter-spacing: 0.06em;
+
       text-transform: uppercase;
 
-      text-shadow: 0 0 12px rgba(230, 0, 35, 0.28);
+      text-shadow:
+        0 0 12px rgba(230, 0, 35, 0.28);
     }
 
-    /* MATCHES */
+    /* =====================================
+       MATCHER
+    ===================================== */
 
     .match-list {
       display: grid;
+
       gap: 16px;
     }
 
@@ -277,9 +335,11 @@
       background: #ffffff;
 
       border: 1px solid rgba(230, 0, 35, 0.22);
+
       border-radius: 14px;
 
-      box-shadow: 0 0 18px rgba(230, 0, 35, 0.1);
+      box-shadow:
+        0 0 18px rgba(230, 0, 35, 0.1);
 
       text-align: center;
     }
@@ -288,13 +348,17 @@
       display: flex;
 
       align-items: center;
+
       justify-content: center;
 
       gap: 14px;
+
       flex-wrap: wrap;
 
       font-family: "Orbitron", sans-serif;
+
       font-weight: 800;
+
       line-height: 1.6;
     }
 
@@ -304,6 +368,7 @@
       color: #5d5d5d;
 
       font-size: 1.05rem;
+
       font-weight: 700;
 
       letter-spacing: 0.04em;
@@ -311,12 +376,16 @@
 
     .vs {
       color: #222222;
+
       font-size: 0.85rem;
 
-      text-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      text-shadow:
+        0 0 8px rgba(0, 0, 0, 0.2);
     }
 
-    /* TEAM COLORS */
+    /* =====================================
+       TEAM COLORS
+    ===================================== */
 
     .team-red {
       color: var(--red);
@@ -344,6 +413,15 @@
         0 0 24px rgba(22, 163, 74, 0.25);
     }
 
+    .team-blue {
+      color: var(--blue);
+
+      text-shadow:
+        0 0 5px #ffffff,
+        0 0 12px rgba(0, 87, 255, 0.75),
+        0 0 24px rgba(0, 87, 255, 0.35);
+    }
+
     .team-white {
       color: #ffffff;
 
@@ -355,18 +433,23 @@
         0 0 24px rgba(230, 0, 35, 0.35);
     }
 
-    /* TABLE */
+    /* =====================================
+       TABLE
+    ===================================== */
 
     .table-wrap {
       width: 100%;
+
       overflow-x: auto;
 
       border: 1px solid rgba(230, 0, 35, 0.2);
+
       border-radius: 12px;
     }
 
     table {
       width: 100%;
+
       min-width: 560px;
 
       border-collapse: collapse;
@@ -380,12 +463,15 @@
       padding: 14px 10px;
 
       color: #ffffff;
+
       background: var(--red);
 
       font-family: "Orbitron", sans-serif;
+
       font-size: 0.78rem;
 
       letter-spacing: 0.04em;
+
       text-align: center;
     }
 
@@ -415,9 +501,11 @@
       display: inline-flex;
 
       width: 28px;
+
       height: 28px;
 
       align-items: center;
+
       justify-content: center;
 
       margin-right: 8px;
@@ -425,29 +513,37 @@
       color: var(--red);
 
       border: 1px solid rgba(230, 0, 35, 0.3);
+
       border-radius: 50%;
 
       font-family: "Orbitron", sans-serif;
     }
 
-    /* RESULTS */
+    /* =====================================
+       RESULTAT
+    ===================================== */
 
     .result-score {
       color: var(--red);
 
       font-family: "Orbitron", sans-serif;
+
       font-size: 1.3rem;
+
       font-weight: 800;
 
       letter-spacing: 0.1em;
     }
 
-    /* TEAMS */
+    /* =====================================
+       LAG
+    ===================================== */
 
     .teams-grid {
       display: grid;
 
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
 
       gap: 18px;
     }
@@ -460,6 +556,7 @@
       flex-direction: column;
 
       align-items: center;
+
       justify-content: center;
 
       gap: 10px;
@@ -469,6 +566,7 @@
       background: #ffffff;
 
       border: 1px solid rgba(230, 0, 35, 0.2);
+
       border-radius: 14px;
 
       text-align: center;
@@ -486,23 +584,29 @@
 
     .team-badge {
       width: 52px;
+
       height: 52px;
 
       display: grid;
+
       place-items: center;
 
       color: var(--red);
 
       border: 2px solid currentColor;
+
       border-radius: 50%;
 
       font-family: "Orbitron", sans-serif;
+
       font-weight: 800;
 
       box-shadow: 0 0 15px currentColor;
     }
 
-    /* FOOTER */
+    /* =====================================
+       FOOTER
+    ===================================== */
 
     footer {
       padding: 24px 20px 40px;
@@ -516,7 +620,9 @@
       letter-spacing: 0.06em;
     }
 
-    /* MOBILE */
+    /* =====================================
+       MOBILE
+    ===================================== */
 
     @media (max-width: 760px) {
 
@@ -535,7 +641,8 @@
 
         display: grid;
 
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
 
         gap: 8px;
 
@@ -580,16 +687,20 @@
 
     }
 
-    /* REDUCED MOTION */
+    /* =====================================
+       REDUCED MOTION
+    ===================================== */
 
     @media (prefers-reduced-motion: reduce) {
 
       *,
       *::before,
       *::after {
+
         scroll-behavior: auto !important;
 
         animation-duration: 0.01ms !important;
+
         animation-iteration-count: 1 !important;
 
         transition-duration: 0.01ms !important;
@@ -603,35 +714,43 @@
 
 <body>
 
+
   <!-- MOVING BACKGROUND -->
 
   <div id="particles" aria-hidden="true">
 
-    <span class="triangle red"
+    <span
+      class="triangle red"
       style="left: 5%; animation-duration: 32s; animation-delay: -8s;">
     </span>
 
-    <span class="triangle white"
+    <span
+      class="triangle white"
       style="left: 18%; animation-duration: 42s; animation-delay: -25s;">
     </span>
 
-    <span class="triangle red"
+    <span
+      class="triangle red"
       style="left: 32%; animation-duration: 36s; animation-delay: -18s;">
     </span>
 
-    <span class="triangle white"
+    <span
+      class="triangle white"
       style="left: 47%; animation-duration: 48s; animation-delay: -30s;">
     </span>
 
-    <span class="triangle red"
+    <span
+      class="triangle red"
       style="left: 61%; animation-duration: 39s; animation-delay: -12s;">
     </span>
 
-    <span class="triangle white"
+    <span
+      class="triangle white"
       style="left: 76%; animation-duration: 45s; animation-delay: -35s;">
     </span>
 
-    <span class="triangle red"
+    <span
+      class="triangle red"
       style="left: 90%; animation-duration: 34s; animation-delay: -20s;">
     </span>
 
@@ -661,23 +780,33 @@
 
     <!-- SIDEBAR -->
 
-    <aside class="sidebar" aria-label="Huvudmeny">
+    <aside
+      class="sidebar"
+      aria-label="Huvudmeny">
 
       <h2>MENY</h2>
 
-      <a class="nav-link" href="#matcher">
+      <a
+        class="nav-link"
+        href="#matcher">
         Matcher
       </a>
 
-      <a class="nav-link" href="#tabellen">
+      <a
+        class="nav-link"
+        href="#tabellen">
         Tabellen
       </a>
 
-      <a class="nav-link" href="#resultat">
+      <a
+        class="nav-link"
+        href="#resultat">
         Resultat
       </a>
 
-      <a class="nav-link" href="#lag">
+      <a
+        class="nav-link"
+        href="#lag">
         Lag
       </a>
 
@@ -687,11 +816,13 @@
     <main>
 
 
-      <!-- =========================
+      <!-- =====================================
            TABELLEN
-      ========================== -->
+      ====================================== -->
 
-      <section class="section" id="tabellen">
+      <section
+        class="section"
+        id="tabellen">
 
         <h2 class="section-heading">
           Tabellen
@@ -705,6 +836,7 @@
             <thead>
 
               <tr>
+
                 <th>Lag</th>
                 <th>M</th>
                 <th>V</th>
@@ -714,6 +846,7 @@
                 <th>IM</th>
                 <th>MS</th>
                 <th>Poäng</th>
+
               </tr>
 
             </thead>
@@ -722,15 +855,20 @@
             <tbody>
 
 
-              <!-- 1. MARDELI FC -->
+              <!-- MARDELI FC -->
 
               <tr>
 
                 <td>
-                  <span class="rank">1</span>
+
+                  <span class="rank">
+                    1
+                  </span>
+
                   <span class="team-green">
                     MARDELI FC
                   </span>
+
                 </td>
 
                 <td>2</td>
@@ -745,15 +883,20 @@
               </tr>
 
 
-              <!-- 2. LA REMONTADA FC -->
+              <!-- LA REMONTADA FC -->
 
               <tr>
 
                 <td>
-                  <span class="rank">2</span>
+
+                  <span class="rank">
+                    2
+                  </span>
+
                   <span class="team-black">
                     LA REMONTADA FC
                   </span>
+
                 </td>
 
                 <td>2</td>
@@ -768,15 +911,20 @@
               </tr>
 
 
-              <!-- 3. FUTURE STAR FC -->
+              <!-- IFK SJÖBO -->
 
               <tr>
 
                 <td>
-                  <span class="rank">3</span>
-                  <span class="team-black">
-                    FUTURE STAR FC
+
+                  <span class="rank">
+                    3
                   </span>
+
+                  <span class="team-blue">
+                    IFK SJÖBO
+                  </span>
+
                 </td>
 
                 <td>0</td>
@@ -791,15 +939,20 @@
               </tr>
 
 
-              <!-- 4. LALL FC -->
+              <!-- LALL FC -->
 
               <tr>
 
                 <td>
-                  <span class="rank">4</span>
+
+                  <span class="rank">
+                    4
+                  </span>
+
                   <span class="team-white">
                     LALL FC
                   </span>
+
                 </td>
 
                 <td>0</td>
@@ -832,11 +985,13 @@
 
 
 
-      <!-- =========================
+      <!-- =====================================
            MATCHER
-      ========================== -->
+      ====================================== -->
 
-      <section class="section" id="matcher">
+      <section
+        class="section"
+        id="matcher">
 
         <h2 class="section-heading">
           Matcher
@@ -846,7 +1001,7 @@
         <div class="match-list">
 
 
-          <!-- 19 SEPTEMBER -->
+          <!-- LA REMONTADA VS MARDELI - 19 SEPTEMBER -->
 
           <article class="match-card">
 
@@ -885,7 +1040,7 @@
 
 
 
-          <!-- 3 OCTOBER WALKOVER -->
+          <!-- LA REMONTADA VS MARDELI - WALKOVER -->
 
           <article class="match-card">
 
@@ -924,7 +1079,41 @@
 
 
 
-          <!-- LALL VS FUTURE STAR -->
+          <!-- IFK SJÖBO VS LA REMONTADA -->
+
+          <article class="match-card">
+
+            <div class="match-teams">
+
+              <span class="team-blue">
+                IFK SJÖBO
+              </span>
+
+              <span class="vs">
+                VS
+              </span>
+
+              <span class="team-black">
+                LA REMONTADA FC
+              </span>
+
+            </div>
+
+
+            <div class="match-meta">
+              4 oktober • 14:30
+            </div>
+
+
+            <div class="match-meta">
+              📍 Björkängsvallen
+            </div>
+
+          </article>
+
+
+
+          <!-- LALL VS IFK SJÖBO -->
 
           <article class="match-card">
 
@@ -938,8 +1127,8 @@
                 VS
               </span>
 
-              <span class="team-black">
-                FUTURE STAR FC
+              <span class="team-blue">
+                IFK SJÖBO
               </span>
 
             </div>
@@ -958,11 +1147,13 @@
 
 
 
-      <!-- =========================
+      <!-- =====================================
            RESULTAT
-      ========================== -->
+      ====================================== -->
 
-      <section class="section" id="resultat">
+      <section
+        class="section"
+        id="resultat">
 
         <h2 class="section-heading">
           Resultat
@@ -972,7 +1163,7 @@
         <div class="match-list">
 
 
-          <!-- 19 SEPTEMBER RESULT -->
+          <!-- LA REMONTADA VS MARDELI -->
 
           <article class="match-card">
 
@@ -1011,7 +1202,7 @@
 
 
 
-          <!-- 3 OCTOBER RESULT -->
+          <!-- WALKOVER -->
 
           <article class="match-card">
 
@@ -1050,14 +1241,14 @@
 
 
 
-          <!-- LALL VS FUTURE STAR -->
+          <!-- UPCOMING IFK SJÖBO VS LA REMONTADA -->
 
           <article class="match-card">
 
             <div class="match-teams">
 
-              <span class="team-white">
-                LALL FC
+              <span class="team-blue">
+                IFK SJÖBO
               </span>
 
               <span class="vs">
@@ -1065,14 +1256,19 @@
               </span>
 
               <span class="team-black">
-                FUTURE STAR FC
+                LA REMONTADA FC
               </span>
 
             </div>
 
 
             <div class="match-meta">
-              Ingen datum bestämt än
+              4 oktober • 14:30
+            </div>
+
+
+            <div class="match-meta">
+              📍 Björkängsvallen
             </div>
 
 
@@ -1083,17 +1279,20 @@
           </article>
 
 
+
         </div>
 
       </section>
 
 
 
-      <!-- =========================
+      <!-- =====================================
            LAG
-      ========================== -->
+      ====================================== -->
 
-      <section class="section" id="lag">
+      <section
+        class="section"
+        id="lag">
 
         <h2 class="section-heading">
           Lag
@@ -1119,16 +1318,16 @@
 
 
 
-          <!-- FUTURE STAR -->
+          <!-- IFK SJÖBO -->
 
           <article class="team-card">
 
-            <div class="team-badge team-black">
-              F
+            <div class="team-badge team-blue">
+              I
             </div>
 
-            <div class="team-name team-black">
-              FUTURE STAR FC
+            <div class="team-name team-blue">
+              IFK SJÖBO
             </div>
 
           </article>
@@ -1184,4 +1383,5 @@
 
 
 </body>
+
 </html>
