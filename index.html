@@ -4,9 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Viskan Ligan</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --red: #e60023;
@@ -29,8 +32,17 @@
       min-height: 100vh;
       color: var(--black);
       background:
-        radial-gradient(circle at 15% 10%, rgba(230, 0, 35, 0.08), transparent 30%),
-        linear-gradient(135deg, #ffffff 0%, #fff5f6 48%, #ffffff 100%);
+        radial-gradient(
+          circle at 15% 10%,
+          rgba(230, 0, 35, 0.08),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #ffffff 0%,
+          #fff5f6 48%,
+          #ffffff 100%
+        );
       font-family: "Rajdhani", sans-serif;
       overflow-x: hidden;
     }
@@ -72,9 +84,11 @@
       0% {
         transform: translate3d(0, 110vh, 0) rotate(0deg);
       }
+
       50% {
         transform: translate3d(70px, 50vh, 0) rotate(180deg);
       }
+
       100% {
         transform: translate3d(-80px, -15vh, 0) rotate(360deg);
       }
@@ -82,7 +96,12 @@
 
     .top-line {
       height: 7px;
-      background: linear-gradient(90deg, var(--red), #ff7187, var(--red));
+      background: linear-gradient(
+        90deg,
+        var(--red),
+        #ff7187,
+        var(--red)
+      );
       box-shadow: 0 0 18px rgba(230, 0, 35, 0.65);
     }
 
@@ -205,7 +224,8 @@
       background: #ffffff;
       border: 1px solid rgba(230, 0, 35, 0.22);
       border-radius: 14px;
-      box-shadow: 0 0 18px rgba(230, 0, 35, 0.1);
+      box-shadow:
+        0 0 18px rgba(230, 0, 35, 0.1);
       text-align: center;
     }
 
@@ -500,6 +520,7 @@
 
             <tbody>
 
+              <!-- 1. IFK SJÖBO -->
               <tr>
                 <td>
                   <span class="rank">1</span>
@@ -515,6 +536,7 @@
                 <td>3</td>
               </tr>
 
+              <!-- 2. MARDELI FC -->
               <tr>
                 <td>
                   <span class="rank">2</span>
@@ -530,6 +552,7 @@
                 <td>3</td>
               </tr>
 
+              <!-- 3. LA REMONTADA FC -->
               <tr>
                 <td>
                   <span class="rank">3</span>
@@ -545,6 +568,7 @@
                 <td>3</td>
               </tr>
 
+              <!-- 4. LALL FC -->
               <tr>
                 <td>
                   <span class="rank">4</span>
@@ -570,12 +594,14 @@
         </p>
       </section>
 
+
       <!-- MATCHER -->
       <section class="section" id="matcher">
         <h2 class="section-heading">Matcher</h2>
 
         <div class="match-list">
 
+          <!-- LA REMONTADA VS MARDELI -->
           <article class="match-card">
             <div class="match-teams">
               <span class="team-black">LA REMONTADA FC</span>
@@ -596,6 +622,8 @@
             </div>
           </article>
 
+
+          <!-- LA REMONTADA VS MARDELI - WALKOVER -->
           <article class="match-card">
             <div class="match-teams">
               <span class="team-black">LA REMONTADA FC</span>
@@ -616,6 +644,8 @@
             </div>
           </article>
 
+
+          <!-- IFK SJÖBO VS LA REMONTADA -->
           <article class="match-card">
             <div class="match-teams">
               <span class="team-blue">IFK SJÖBO</span>
@@ -636,6 +666,8 @@
             </div>
           </article>
 
+
+          <!-- LALL VS IFK SJÖBO -->
           <article class="match-card">
             <div class="match-teams">
               <span class="team-white">LALL FC</span>
@@ -644,12 +676,17 @@
             </div>
 
             <div class="match-meta">
-              Ingen datum bestämt än
+              10 oktober • 16:00
+            </div>
+
+            <div class="match-meta">
+              📍 Borås GIF
             </div>
           </article>
 
         </div>
       </section>
+
 
       <!-- RESULTAT -->
       <section class="section" id="resultat">
@@ -657,6 +694,7 @@
 
         <div class="match-list">
 
+          <!-- LA REMONTADA VS MARDELI -->
           <article class="match-card">
             <div class="match-teams">
               <span class="team-black">LA REMONTADA FC</span>
@@ -677,6 +715,8 @@
             </div>
           </article>
 
+
+          <!-- WALKOVER -->
           <article class="match-card">
             <div class="match-teams">
               <span class="team-black">LA REMONTADA FC</span>
@@ -697,6 +737,8 @@
             </div>
           </article>
 
+
+          <!-- IFK SJÖBO VS LA REMONTADA -->
           <article class="match-card">
             <div class="match-teams">
               <span class="team-blue">IFK SJÖBO</span>
@@ -720,12 +762,14 @@
         </div>
       </section>
 
+
       <!-- LAG -->
       <section class="section" id="lag">
         <h2 class="section-heading">Lag</h2>
 
         <div class="teams-grid">
 
+          <!-- LA REMONTADA -->
           <article class="team-card">
             <div class="team-badge team-black">L</div>
             <div class="team-name team-black">
@@ -733,6 +777,7 @@
             </div>
           </article>
 
+          <!-- IFK SJÖBO -->
           <article class="team-card">
             <div class="team-badge team-blue">I</div>
             <div class="team-name team-blue">
@@ -740,6 +785,7 @@
             </div>
           </article>
 
+          <!-- MARDELI -->
           <article class="team-card">
             <div class="team-badge team-green">M</div>
             <div class="team-name team-green">
@@ -747,6 +793,7 @@
             </div>
           </article>
 
+          <!-- LALL -->
           <article class="team-card">
             <div class="team-badge team-white">L</div>
             <div class="team-name team-white">
