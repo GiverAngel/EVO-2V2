@@ -1,42 +1,31 @@
 <!DOCTYPE html>
 <html lang="sv">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Viskan Ligan</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
-
   <style>
-
     :root {
       --red: #e60023;
       --red-light: #ff2148;
       --white: #ffffff;
       --black: #090909;
       --blue: #0057ff;
-
       --panel: rgba(255, 255, 255, 0.88);
       --border: rgba(230, 0, 35, 0.25);
       --shadow: 0 0 24px rgba(230, 0, 35, 0.16);
     }
-
     * {
       box-sizing: border-box;
       scroll-behavior: smooth;
     }
-
     body {
       margin: 0;
       min-height: 100vh;
-
       color: var(--black);
-
       background:
         radial-gradient(
           circle at 15% 10%,
@@ -49,794 +38,408 @@
           #fff5f6 48%,
           #ffffff 100%
         );
-
       font-family: "Rajdhani", sans-serif;
       overflow-x: hidden;
     }
-
-    /* =====================================
-       MOVING TRIANGLE BACKGROUND
-    ===================================== */
-
     #particles {
       position: fixed;
       inset: 0;
       z-index: -1;
-
       overflow: hidden;
       pointer-events: none;
     }
-
     .triangle {
       position: absolute;
-
       width: 0;
       height: 0;
-
       opacity: 0.25;
-
       filter: drop-shadow(0 0 14px currentColor);
-
       animation: floatTriangle linear infinite;
     }
-
     .triangle.red {
       border-left: 24px solid transparent;
       border-right: 24px solid transparent;
       border-bottom: 42px solid var(--red);
-
       color: var(--red);
     }
-
     .triangle.white {
       border-left: 30px solid transparent;
       border-right: 30px solid transparent;
       border-bottom: 52px solid #ffffff;
-
       color: #ffffff;
-
       opacity: 0.7;
-
-      filter: drop-shadow(
-        0 0 12px rgba(230, 0, 35, 0.45)
-      );
+      filter: drop-shadow(0 0 12px rgba(230, 0, 35, 0.45));
     }
-
     @keyframes floatTriangle {
-
       0% {
         transform: translate3d(0, 110vh, 0) rotate(0deg);
       }
-
       50% {
         transform: translate3d(70px, 50vh, 0) rotate(180deg);
       }
-
       100% {
         transform: translate3d(-80px, -15vh, 0) rotate(360deg);
       }
-
     }
-
-    /* =====================================
-       TOP
-    ===================================== */
-
     .top-line {
       height: 7px;
-
       background: linear-gradient(
         90deg,
         var(--red),
         #ff7187,
         var(--red)
       );
-
       box-shadow: 0 0 18px rgba(230, 0, 35, 0.65);
     }
-
     header {
       text-align: center;
-
       padding: 42px 20px 28px;
-
       position: relative;
     }
-
     .league-title {
       margin: 0;
-
       color: var(--red);
-
       font-family: "Orbitron", sans-serif;
-
       font-size: clamp(2.2rem, 8vw, 5.8rem);
-
       font-weight: 800;
-
       letter-spacing: 0.08em;
-
       text-transform: uppercase;
-
       text-shadow:
         0 0 5px #ffffff,
         0 0 12px rgba(230, 0, 35, 0.7),
         0 0 30px rgba(230, 0, 35, 0.4);
     }
-
     .subtitle {
       margin: 10px 0 0;
-
       color: #5c5c5c;
-
       font-size: 1.05rem;
-
       letter-spacing: 0.25em;
-
       text-transform: uppercase;
     }
-
-    /* =====================================
-       LAYOUT
-    ===================================== */
-
     .layout {
       display: flex;
-
       width: min(1400px, 100%);
-
       margin: 0 auto;
-
       padding: 0 20px 60px;
-
       gap: 24px;
-
       align-items: flex-start;
     }
-
-    /* =====================================
-       SIDEBAR
-    ===================================== */
-
     .sidebar {
       position: sticky;
-
       top: 18px;
-
       width: 230px;
-
       flex: 0 0 230px;
-
       padding: 18px;
-
       background: rgba(255, 255, 255, 0.92);
-
       border: 1px solid var(--border);
-
       border-left: 5px solid var(--red);
-
       border-radius: 16px;
-
       box-shadow: var(--shadow);
     }
-
     .sidebar h2 {
       margin: 0 0 15px;
-
       color: var(--red);
-
       font-family: "Orbitron", sans-serif;
-
       font-size: 1.1rem;
-
       letter-spacing: 0.08em;
     }
-
     .nav-link {
       display: block;
-
       margin: 9px 0;
-
       padding: 13px 14px;
-
       color: #171717;
-
       text-decoration: none;
-
       font-family: "Orbitron", sans-serif;
-
       font-size: 0.83rem;
-
       font-weight: 700;
-
       border: 1px solid transparent;
-
       border-radius: 10px;
-
       transition: 0.25s ease;
     }
-
     .nav-link:hover,
     .nav-link:focus {
-
       color: var(--red);
-
       border-color: var(--red);
-
       background: #fff2f4;
-
       box-shadow: 0 0 14px rgba(230, 0, 35, 0.2);
-
       transform: translateX(4px);
     }
-
-    /* =====================================
-       SECTIONS
-    ===================================== */
-
     main {
       min-width: 0;
-
       flex: 1;
     }
-
     .section {
       scroll-margin-top: 20px;
-
       margin-bottom: 28px;
-
       padding: clamp(20px, 4vw, 34px);
-
       background: var(--panel);
-
       border: 1px solid var(--border);
-
       border-radius: 18px;
-
       box-shadow: var(--shadow);
-
       backdrop-filter: blur(5px);
     }
-
     .section-heading {
       margin: 0 0 20px;
-
       padding-bottom: 12px;
-
       border-bottom: 2px solid rgba(230, 0, 35, 0.15);
-
       color: var(--red);
-
       font-family: "Orbitron", sans-serif;
-
       font-size: clamp(1.35rem, 3vw, 2rem);
-
       letter-spacing: 0.06em;
-
       text-transform: uppercase;
-
-      text-shadow:
-        0 0 12px rgba(230, 0, 35, 0.28);
+      text-shadow: 0 0 12px rgba(230, 0, 35, 0.28);
     }
-
-    /* =====================================
-       MATCHER
-    ===================================== */
-
     .match-list {
       display: grid;
-
       gap: 16px;
     }
-
     .match-card {
       padding: 22px;
-
       background: #ffffff;
-
       border: 1px solid rgba(230, 0, 35, 0.22);
-
       border-radius: 14px;
-
       box-shadow:
         0 0 18px rgba(230, 0, 35, 0.1);
-
       text-align: center;
     }
-
     .match-teams {
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
       gap: 14px;
-
       flex-wrap: wrap;
-
       font-family: "Orbitron", sans-serif;
-
       font-weight: 800;
-
       line-height: 1.6;
     }
-
     .match-meta {
       margin-top: 12px;
-
       color: #5d5d5d;
-
       font-size: 1.05rem;
-
       font-weight: 700;
-
       letter-spacing: 0.04em;
     }
-
     .vs {
       color: #222222;
-
       font-size: 0.85rem;
-
-      text-shadow:
-        0 0 8px rgba(0, 0, 0, 0.2);
+      text-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
     }
-
-    /* =====================================
-       TEAM COLORS
-    ===================================== */
-
     .team-red {
       color: var(--red);
-
       text-shadow:
         0 0 5px #ffffff,
         0 0 12px rgba(230, 0, 35, 0.75),
         0 0 24px rgba(230, 0, 35, 0.35);
     }
-
     .team-black {
       color: #111111;
-
       text-shadow:
         0 0 5px #ffffff,
         0 0 12px rgba(0, 0, 0, 0.45);
     }
-
     .team-green {
       color: #16a34a;
-
       text-shadow:
         0 0 5px #ffffff,
         0 0 12px rgba(22, 163, 74, 0.65),
         0 0 24px rgba(22, 163, 74, 0.25);
     }
-
     .team-blue {
       color: var(--blue);
-
       text-shadow:
         0 0 5px #ffffff,
         0 0 12px rgba(0, 87, 255, 0.75),
         0 0 24px rgba(0, 87, 255, 0.35);
     }
-
     .team-white {
       color: #ffffff;
-
       -webkit-text-stroke: 1px #333333;
-
       text-shadow:
         0 0 5px #ffffff,
         0 0 12px rgba(230, 0, 35, 0.55),
         0 0 24px rgba(230, 0, 35, 0.35);
     }
-
-    /* =====================================
-       TABLE
-    ===================================== */
-
     .table-wrap {
       width: 100%;
-
       overflow-x: auto;
-
       border: 1px solid rgba(230, 0, 35, 0.2);
-
       border-radius: 12px;
     }
-
     table {
       width: 100%;
-
       min-width: 560px;
-
       border-collapse: collapse;
-
       background: #ffffff;
-
       font-size: 1rem;
     }
-
     th {
       padding: 14px 10px;
-
       color: #ffffff;
-
       background: var(--red);
-
       font-family: "Orbitron", sans-serif;
-
       font-size: 0.78rem;
-
       letter-spacing: 0.04em;
-
       text-align: center;
     }
-
     td {
       padding: 13px 10px;
-
       border-bottom: 1px solid #f0dadd;
-
       text-align: center;
-
       font-weight: 700;
     }
-
     td:first-child {
       text-align: left;
     }
-
     tr:last-child td {
       border-bottom: 0;
     }
-
     tr:hover td {
       background: #fff5f6;
     }
-
     .rank {
       display: inline-flex;
-
       width: 28px;
-
       height: 28px;
-
       align-items: center;
-
       justify-content: center;
-
       margin-right: 8px;
-
       color: var(--red);
-
       border: 1px solid rgba(230, 0, 35, 0.3);
-
       border-radius: 50%;
-
       font-family: "Orbitron", sans-serif;
     }
-
-    /* =====================================
-       RESULTAT
-    ===================================== */
-
     .result-score {
       color: var(--red);
-
       font-family: "Orbitron", sans-serif;
-
       font-size: 1.3rem;
-
       font-weight: 800;
-
       letter-spacing: 0.1em;
     }
-
-    /* =====================================
-       LAG
-    ===================================== */
-
     .teams-grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
     }
-
     .team-card {
       min-height: 145px;
-
       display: flex;
-
       flex-direction: column;
-
       align-items: center;
-
       justify-content: center;
-
       gap: 10px;
-
       padding: 22px 12px;
-
       background: #ffffff;
-
       border: 1px solid rgba(230, 0, 35, 0.2);
-
       border-radius: 14px;
-
       text-align: center;
     }
-
     .team-card .team-name {
       font-family: "Orbitron", sans-serif;
-
       font-size: clamp(1rem, 2.4vw, 1.45rem);
-
       font-weight: 800;
-
       line-height: 1.5;
     }
-
     .team-badge {
       width: 52px;
-
       height: 52px;
-
       display: grid;
-
       place-items: center;
-
       color: var(--red);
-
       border: 2px solid currentColor;
-
       border-radius: 50%;
-
       font-family: "Orbitron", sans-serif;
-
       font-weight: 800;
-
       box-shadow: 0 0 15px currentColor;
     }
-
-    /* =====================================
-       FOOTER
-    ===================================== */
-
     footer {
       padding: 24px 20px 40px;
-
       color: #666666;
-
       text-align: center;
-
       font-size: 0.95rem;
-
       letter-spacing: 0.06em;
     }
-
-    /* =====================================
-       MOBILE
-    ===================================== */
-
     @media (max-width: 760px) {
-
       .layout {
         display: block;
-
         padding: 0 12px 35px;
       }
-
       .sidebar {
         position: static;
-
         width: 100%;
-
         margin-bottom: 18px;
-
         display: grid;
-
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
-
         padding: 14px;
       }
-
       .sidebar h2 {
         grid-column: 1 / -1;
-
         margin-bottom: 4px;
       }
-
       .nav-link {
         margin: 0;
-
         text-align: center;
-
         padding: 12px 6px;
-
         font-size: 0.7rem;
       }
-
       .section {
         padding: 20px 14px;
       }
-
       .teams-grid {
         grid-template-columns: 1fr;
       }
-
       .match-teams {
         gap: 8px;
-
         font-size: 0.82rem;
       }
-
       .subtitle {
         font-size: 0.75rem;
-
         letter-spacing: 0.15em;
       }
-
     }
-
-    /* =====================================
-       REDUCED MOTION
-    ===================================== */
-
     @media (prefers-reduced-motion: reduce) {
-
       *,
       *::before,
       *::after {
-
         scroll-behavior: auto !important;
-
         animation-duration: 0.01ms !important;
-
         animation-iteration-count: 1 !important;
-
         transition-duration: 0.01ms !important;
       }
-
     }
-
   </style>
-
 </head>
-
 <body>
-
-
-  <!-- MOVING BACKGROUND -->
-
   <div id="particles" aria-hidden="true">
-
-    <span
-      class="triangle red"
-      style="left: 5%; animation-duration: 32s; animation-delay: -8s;">
-    </span>
-
-    <span
-      class="triangle white"
-      style="left: 18%; animation-duration: 42s; animation-delay: -25s;">
-    </span>
-
-    <span
-      class="triangle red"
-      style="left: 32%; animation-duration: 36s; animation-delay: -18s;">
-    </span>
-
-    <span
-      class="triangle white"
-      style="left: 47%; animation-duration: 48s; animation-delay: -30s;">
-    </span>
-
-    <span
-      class="triangle red"
-      style="left: 61%; animation-duration: 39s; animation-delay: -12s;">
-    </span>
-
-    <span
-      class="triangle white"
-      style="left: 76%; animation-duration: 45s; animation-delay: -35s;">
-    </span>
-
-    <span
-      class="triangle red"
-      style="left: 90%; animation-duration: 34s; animation-delay: -20s;">
-    </span>
-
+    <span class="triangle red" style="left: 5%; animation-duration: 32s; animation-delay: -8s;"></span>
+    <span class="triangle white" style="left: 18%; animation-duration: 42s; animation-delay: -25s;"></span>
+    <span class="triangle red" style="left: 32%; animation-duration: 36s; animation-delay: -18s;"></span>
+    <span class="triangle white" style="left: 47%; animation-duration: 48s; animation-delay: -30s;"></span>
+    <span class="triangle red" style="left: 61%; animation-duration: 39s; animation-delay: -12s;"></span>
+    <span class="triangle white" style="left: 76%; animation-duration: 45s; animation-delay: -35s;"></span>
+    <span class="triangle red" style="left: 90%; animation-duration: 34s; animation-delay: -20s;"></span>
   </div>
-
-
   <div class="top-line"></div>
-
-
-  <!-- HEADER -->
-
   <header>
-
-    <h1 class="league-title">
-      Viskan Ligan
-    </h1>
-
-    <p class="subtitle">
-      för att skapa samhällen
-    </p>
-
+    <h1 class="league-title">Viskan Ligan</h1>
+    <p class="subtitle">för att skapa samhällen</p>
   </header>
-
-
   <div class="layout">
-
-
-    <!-- SIDEBAR -->
-
-    <aside
-      class="sidebar"
-      aria-label="Huvudmeny">
-
+    <aside class="sidebar" aria-label="Huvudmeny">
       <h2>MENY</h2>
-
-      <a
-        class="nav-link"
-        href="#matcher">
-        Matcher
-      </a>
-
-      <a
-        class="nav-link"
-        href="#tabellen">
-        Tabellen
-      </a>
-
-      <a
-        class="nav-link"
-        href="#resultat">
-        Resultat
-      </a>
-
-      <a
-        class="nav-link"
-        href="#lag">
-        Lag
-      </a>
-
+      <a class="nav-link" href="#matcher">Matcher</a>
+      <a class="nav-link" href="#tabellen">Tabellen</a>
+      <a class="nav-link" href="#resultat">Resultat</a>
+      <a class="nav-link" href="#lag">Lag</a>
     </aside>
-
-
     <main>
-
-
-      <!-- =====================================
-           TABELLEN
-      ====================================== -->
-
-      <section
-        class="section"
-        id="tabellen">
-
-        <h2 class="section-heading">
-          Tabellen
-        </h2>
-
-
+      <!-- TABELLEN -->
+      <section class="section" id="tabellen">
+        <h2 class="section-heading">Tabellen</h2>
         <div class="table-wrap">
-
           <table>
-
             <thead>
-
               <tr>
-
                 <th>Lag</th>
                 <th>M</th>
                 <th>V</th>
@@ -846,31 +449,30 @@
                 <th>IM</th>
                 <th>MS</th>
                 <th>Poäng</th>
-
               </tr>
-
             </thead>
-
-
             <tbody>
-
-
-              <!-- MARDELI FC -->
-
+              <!-- IFK SJÖBO -->
               <tr>
-
                 <td>
-
-                  <span class="rank">
-                    1
-                  </span>
-
-                  <span class="team-green">
-                    MARDELI FC
-                  </span>
-
+                  <span class="rank">1</span>
+                  <span class="team-blue">IFK SJÖBO</span>
                 </td>
-
+                <td>1</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>6</td>
+                <td>3</td>
+                <td>+3</td>
+                <td>3</td>
+              </tr>
+              <!-- MARDELI FC -->
+              <tr>
+                <td>
+                  <span class="rank">2</span>
+                  <span class="team-green">MARDELI FC</span>
+                </td>
                 <td>2</td>
                 <td>1</td>
                 <td>0</td>
@@ -879,82 +481,28 @@
                 <td>9</td>
                 <td>+1</td>
                 <td>3</td>
-
               </tr>
-
-
               <!-- LA REMONTADA FC -->
-
               <tr>
-
                 <td>
-
-                  <span class="rank">
-                    2
-                  </span>
-
-                  <span class="team-black">
-                    LA REMONTADA FC
-                  </span>
-
+                  <span class="rank">3</span>
+                  <span class="team-black">LA REMONTADA FC</span>
                 </td>
-
-                <td>2</td>
-                <td>1</td>
-                <td>0</td>
-                <td>1</td>
-                <td>9</td>
-                <td>10</td>
-                <td>-1</td>
                 <td>3</td>
-
+                <td>1</td>
+                <td>0</td>
+                <td>2</td>
+                <td>12</td>
+                <td>16</td>
+                <td>-4</td>
+                <td>3</td>
               </tr>
-
-
-              <!-- IFK SJÖBO -->
-
-              <tr>
-
-                <td>
-
-                  <span class="rank">
-                    3
-                  </span>
-
-                  <span class="team-blue">
-                    IFK SJÖBO
-                  </span>
-
-                </td>
-
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-
-              </tr>
-
-
               <!-- LALL FC -->
-
               <tr>
-
                 <td>
-
-                  <span class="rank">
-                    4
-                  </span>
-
-                  <span class="team-white">
-                    LALL FC
-                  </span>
-
+                  <span class="rank">4</span>
+                  <span class="team-white">LALL FC</span>
                 </td>
-
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
@@ -963,425 +511,178 @@
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-
               </tr>
-
-
             </tbody>
-
           </table>
-
         </div>
-
-
         <p class="match-meta">
-
           M = Matcher • V = Vinster • O = Oavgjorda • F = Förluster •
           GM = Gjorda mål • IM = Insläppta mål • MS = Målskillnad
-
         </p>
-
       </section>
-
-
-
-      <!-- =====================================
-           MATCHER
-      ====================================== -->
-
-      <section
-        class="section"
-        id="matcher">
-
-        <h2 class="section-heading">
-          Matcher
-        </h2>
-
-
+      <!-- MATCHER -->
+      <section class="section" id="matcher">
+        <h2 class="section-heading">Matcher</h2>
         <div class="match-list">
-
-
-          <!-- LA REMONTADA VS MARDELI - 19 SEPTEMBER -->
-
+          <!-- LA REMONTADA VS MARDELI -->
           <article class="match-card">
-
             <div class="match-teams">
-
-              <span class="team-black">
-                LA REMONTADA FC
-              </span>
-
-              <span class="vs">
-                VS
-              </span>
-
-              <span class="team-green">
-                MARDELI FC
-              </span>
-
+              <span class="team-black">LA REMONTADA FC</span>
+              <span class="vs">VS</span>
+              <span class="team-green">MARDELI FC</span>
             </div>
-
-
             <div class="match-meta">
               19 september • 16:00
             </div>
-
-
             <div class="match-meta">
               📍 Bergdalens IP
             </div>
-
-
             <div class="result-score">
               SPELAD • 6 : 10
             </div>
-
           </article>
-
-
-
           <!-- LA REMONTADA VS MARDELI - WALKOVER -->
-
           <article class="match-card">
-
             <div class="match-teams">
-
-              <span class="team-black">
-                LA REMONTADA FC
-              </span>
-
-              <span class="vs">
-                VS
-              </span>
-
-              <span class="team-green">
-                MARDELI FC
-              </span>
-
+              <span class="team-black">LA REMONTADA FC</span>
+              <span class="vs">VS</span>
+              <span class="team-green">MARDELI FC</span>
             </div>
-
-
             <div class="match-meta">
               3 oktober
             </div>
-
-
             <div class="result-score">
               WALKOVER
             </div>
-
-
             <div class="match-meta">
               3 poäng till LA REMONTADA FC
             </div>
-
           </article>
-
-
-
-          <!-- IFK SJÖBO VS LA REMONTADA -->
-
+          <!-- IFK SJÖBO VS LA REMONTADA - SPELAD -->
           <article class="match-card">
-
             <div class="match-teams">
-
-              <span class="team-blue">
-                IFK SJÖBO
-              </span>
-
-              <span class="vs">
-                VS
-              </span>
-
-              <span class="team-black">
-                LA REMONTADA FC
-              </span>
-
+              <span class="team-blue">IFK SJÖBO</span>
+              <span class="vs">VS</span>
+              <span class="team-black">LA REMONTADA FC</span>
             </div>
-
-
             <div class="match-meta">
               4 oktober • 14:30
             </div>
-
-
             <div class="match-meta">
               📍 Björkängsvallen
             </div>
-
-          </article>
-
-
-
-          <!-- LALL VS IFK SJÖBO -->
-
-          <article class="match-card">
-
-            <div class="match-teams">
-
-              <span class="team-white">
-                LALL FC
-              </span>
-
-              <span class="vs">
-                VS
-              </span>
-
-              <span class="team-blue">
-                IFK SJÖBO
-              </span>
-
+            <div class="result-score">
+              SPELAD • 6 : 3
             </div>
-
-
+          </article>
+          <!-- LALL VS IFK SJÖBO -->
+          <article class="match-card">
+            <div class="match-teams">
+              <span class="team-white">LALL FC</span>
+              <span class="vs">VS</span>
+              <span class="team-blue">IFK SJÖBO</span>
+            </div>
             <div class="match-meta">
               Ingen datum bestämt än
             </div>
-
           </article>
-
-
         </div>
-
       </section>
-
-
-
-      <!-- =====================================
-           RESULTAT
-      ====================================== -->
-
-      <section
-        class="section"
-        id="resultat">
-
-        <h2 class="section-heading">
-          Resultat
-        </h2>
-
-
+      <!-- RESULTAT -->
+      <section class="section" id="resultat">
+        <h2 class="section-heading">Resultat</h2>
         <div class="match-list">
-
-
           <!-- LA REMONTADA VS MARDELI -->
-
           <article class="match-card">
-
             <div class="match-teams">
-
-              <span class="team-black">
-                LA REMONTADA FC
-              </span>
-
-              <span class="vs">
-                VS
-              </span>
-
-              <span class="team-green">
-                MARDELI FC
-              </span>
-
+              <span class="team-black">LA REMONTADA FC</span>
+              <span class="vs">VS</span>
+              <span class="team-green">MARDELI FC</span>
             </div>
-
-
             <div class="match-meta">
               19 september • 16:00
             </div>
-
-
             <div class="match-meta">
               📍 Bergdalens IP
             </div>
-
-
             <div class="result-score">
               6 : 10
             </div>
-
           </article>
-
-
-
           <!-- WALKOVER -->
-
           <article class="match-card">
-
             <div class="match-teams">
-
-              <span class="team-black">
-                LA REMONTADA FC
-              </span>
-
-              <span class="vs">
-                VS
-              </span>
-
-              <span class="team-green">
-                MARDELI FC
-              </span>
-
+              <span class="team-black">LA REMONTADA FC</span>
+              <span class="vs">VS</span>
+              <span class="team-green">MARDELI FC</span>
             </div>
-
-
             <div class="match-meta">
               3 oktober
             </div>
-
-
             <div class="result-score">
               WALKOVER
             </div>
-
-
             <div class="match-meta">
               3 poäng till LA REMONTADA FC
             </div>
-
           </article>
-
-
-
-          <!-- UPCOMING IFK SJÖBO VS LA REMONTADA -->
-
+          <!-- IFK SJÖBO VS LA REMONTADA -->
           <article class="match-card">
-
             <div class="match-teams">
-
-              <span class="team-blue">
-                IFK SJÖBO
-              </span>
-
-              <span class="vs">
-                VS
-              </span>
-
-              <span class="team-black">
-                LA REMONTADA FC
-              </span>
-
+              <span class="team-blue">IFK SJÖBO</span>
+              <span class="vs">VS</span>
+              <span class="team-black">LA REMONTADA FC</span>
             </div>
-
-
             <div class="match-meta">
               4 oktober • 14:30
             </div>
-
-
             <div class="match-meta">
               📍 Björkängsvallen
             </div>
-
-
             <div class="result-score">
-              - : -
+              6 : 3
             </div>
-
           </article>
-
-
-
         </div>
-
       </section>
-
-
-
-      <!-- =====================================
-           LAG
-      ====================================== -->
-
-      <section
-        class="section"
-        id="lag">
-
-        <h2 class="section-heading">
-          Lag
-        </h2>
-
-
+      <!-- LAG -->
+      <section class="section" id="lag">
+        <h2 class="section-heading">Lag</h2>
         <div class="teams-grid">
-
-
           <!-- LA REMONTADA -->
-
           <article class="team-card">
-
-            <div class="team-badge team-black">
-              L
-            </div>
-
+            <div class="team-badge team-black">L</div>
             <div class="team-name team-black">
               LA REMONTADA FC
             </div>
-
           </article>
-
-
-
           <!-- IFK SJÖBO -->
-
           <article class="team-card">
-
-            <div class="team-badge team-blue">
-              I
-            </div>
-
+            <div class="team-badge team-blue">I</div>
             <div class="team-name team-blue">
               IFK SJÖBO
             </div>
-
           </article>
-
-
-
           <!-- MARDELI -->
-
           <article class="team-card">
-
-            <div class="team-badge team-green">
-              M
-            </div>
-
+            <div class="team-badge team-green">M</div>
             <div class="team-name team-green">
               MARDELI FC
             </div>
-
           </article>
-
-
-
           <!-- LALL -->
-
           <article class="team-card">
-
-            <div class="team-badge team-white">
-              L
-            </div>
-
+            <div class="team-badge team-white">L</div>
             <div class="team-name team-white">
               LALL FC
             </div>
-
           </article>
-
-
         </div>
-
       </section>
-
-
     </main>
-
   </div>
-
-
-  <!-- FOOTER -->
-
   <footer>
     VISKAN LIGAN • OFFICIELL LIGASIDA
   </footer>
-
-
 </body>
-
 </html>
