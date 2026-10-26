@@ -18,7 +18,6 @@
       --red-light: #ff2847;
       --bg: #050505;
       --panel: #101010;
-      --panel-light: #171717;
       --border: #292929;
       --muted: #888;
       --white: #f5f5f5;
@@ -32,7 +31,7 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 25px;
+      scroll-padding-top: 90px;
     }
 
     body {
@@ -61,12 +60,11 @@
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      opacity: .13;
+      opacity: .1;
       background-image:
         linear-gradient(30deg, transparent 48%, #e60023 49%, transparent 50%),
         linear-gradient(150deg, transparent 48%, #e60023 49%, transparent 50%);
       background-size: 95px 165px;
-      mask-image: linear-gradient(to bottom, black, transparent 85%);
     }
 
     a {
@@ -74,13 +72,9 @@
       text-decoration: none;
     }
 
-    button {
-      font: inherit;
-    }
-
     .layout {
       display: grid;
-      grid-template-columns: 235px minmax(0, 1fr);
+      grid-template-columns: 225px minmax(0, 1fr);
       min-height: 100vh;
     }
 
@@ -89,7 +83,7 @@
       top: 0;
       height: 100vh;
       padding: 28px 18px;
-      background: rgba(8,8,8,.94);
+      background: rgba(8,8,8,.96);
       border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
@@ -97,12 +91,12 @@
     }
 
     .brand {
-      padding: 5px 12px 30px;
+      padding: 5px 12px 28px;
       border-bottom: 1px solid var(--border);
     }
 
     .brand-mark {
-      font: 900 24px "Orbitron", sans-serif;
+      font: 900 23px "Orbitron", sans-serif;
       letter-spacing: -1px;
     }
 
@@ -114,8 +108,8 @@
       display: block;
       margin-top: 8px;
       color: var(--muted);
-      font-size: 12px;
-      letter-spacing: 2px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
     }
 
@@ -134,7 +128,7 @@
     }
 
     .nav a {
-      padding: 13px 14px;
+      padding: 12px 14px;
       border: 1px solid transparent;
       border-radius: 7px;
       color: #aaa;
@@ -160,16 +154,6 @@
       border-top: 1px solid var(--border);
     }
 
-    .live-dot {
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      margin-right: 7px;
-      border-radius: 50%;
-      background: #36d879;
-      box-shadow: 0 0 10px #36d879;
-    }
-
     .sidebar-bottom p {
       color: #aaa;
       font-size: 14px;
@@ -179,8 +163,18 @@
       display: block;
       margin-top: 10px;
       color: #555;
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 1px;
+    }
+
+    .live-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      margin-right: 7px;
+      border-radius: 50%;
+      background: #36d879;
+      box-shadow: 0 0 10px #36d879;
     }
 
     main {
@@ -197,7 +191,7 @@
       gap: 15px;
       margin-bottom: 30px;
       color: #999;
-      font-size: 13px;
+      font-size: 12px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
     }
@@ -236,7 +230,7 @@
       position: relative;
       z-index: 1;
       color: var(--red-light);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 4px;
       text-transform: uppercase;
@@ -289,9 +283,9 @@
 
     .stat-label {
       color: #888;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
       text-transform: uppercase;
     }
 
@@ -300,13 +294,13 @@
       font: 800 clamp(23px, 3vw, 35px) "Orbitron", sans-serif;
     }
 
-    .stat-value.red {
+    .red {
       color: var(--red-light);
     }
 
     .section {
       margin-top: 44px;
-      scroll-margin-top: 25px;
+      scroll-margin-top: 90px;
     }
 
     .section-heading {
@@ -332,144 +326,17 @@
 
     .section-note {
       color: #777;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .panel {
-      background: rgba(16,16,16,.93);
+      background: rgba(16,16,16,.95);
       border: 1px solid var(--border);
       border-radius: 10px;
       overflow: hidden;
     }
 
-    .match-card {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 16px;
-      padding: 24px;
-    }
-
-    .match-team {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font: 700 clamp(13px, 2vw, 18px) "Orbitron", sans-serif;
-    }
-
-    .match-team:last-child {
-      justify-content: flex-end;
-      text-align: right;
-    }
-
-    .team-badge {
-      display: grid;
-      flex: 0 0 42px;
-      width: 42px;
-      height: 42px;
-      place-items: center;
-      border: 1px solid var(--team-color, var(--red));
-      border-radius: 8px;
-      color: var(--team-color, var(--red));
-      background: color-mix(in srgb, var(--team-color, var(--red)) 12%, #111);
-      font: 800 12px "Orbitron", sans-serif;
-    }
-
-    .match-center {
-      min-width: 110px;
-      text-align: center;
-    }
-
-    .score {
-      font: 900 clamp(24px, 4vw, 36px) "Orbitron", sans-serif;
-      white-space: nowrap;
-    }
-
-    .walkover {
-      display: inline-block;
-      margin-top: 7px;
-      padding: 4px 8px;
-      color: #ffb5bf;
-      background: rgba(230,0,35,.13);
-      border: 1px solid rgba(230,0,35,.35);
-      border-radius: 4px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .match-meta {
-      padding: 12px 20px;
-      color: #999;
-      background: #0b0b0b;
-      border-top: 1px solid var(--border);
-      font-size: 13px;
-      text-align: center;
-    }
-
-    .table-wrap {
-      overflow-x: auto;
-    }
-
-    table {
-      width: 100%;
-      min-width: 700px;
-      border-collapse: collapse;
-      font-size: 15px;
-    }
-
-    th {
-      padding: 15px 12px;
-      color: #888;
-      background: #0b0b0b;
-      font-size: 11px;
-      letter-spacing: 1px;
-      text-align: center;
-      text-transform: uppercase;
-    }
-
-    th:nth-child(2),
-    td:nth-child(2) {
-      text-align: left;
-    }
-
-    td {
-      padding: 15px 12px;
-      border-top: 1px solid #242424;
-      color: #ccc;
-      text-align: center;
-    }
-
-    tbody tr:first-child {
-      background: rgba(230,0,35,.07);
-    }
-
-    tbody tr:first-child td:first-child {
-      color: var(--red-light);
-      font-weight: 700;
-    }
-
-    .table-team {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: white;
-      font-weight: 700;
-    }
-
-    .mini-dot {
-      flex: 0 0 8px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--team-color);
-      box-shadow: 0 0 8px var(--team-color);
-    }
-
-    .points {
-      color: white;
-      font: 800 17px "Orbitron", sans-serif;
-    }
+    /* MATCHES */
 
     .empty {
       padding: 32px 20px;
@@ -498,6 +365,159 @@
       font-size: 15px;
     }
 
+    /* PREMIER LEAGUE-STYLE TABLE */
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 10px;
+    }
+
+    .league-table {
+      width: 100%;
+      min-width: 420px;
+      border-collapse: collapse;
+      table-layout: auto;
+    }
+
+    .league-table thead th {
+      padding: 17px 12px;
+      color: #999;
+      background: #0b0b0b;
+      border-bottom: 1px solid #292929;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-align: center;
+    }
+
+    .league-table th:nth-child(2) {
+      text-align: left;
+    }
+
+    .league-table tbody tr {
+      border-bottom: 1px solid #242424;
+      transition: background .2s ease;
+    }
+
+    .league-table tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    .league-table tbody tr:hover {
+      background: rgba(255,255,255,.035);
+    }
+
+    .league-table td {
+      padding: 19px 12px;
+      color: #ddd;
+      font-size: 15px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .league-table td:first-child {
+      width: 48px;
+      color: #999;
+      font-weight: 700;
+    }
+
+    .league-table td:nth-child(2) {
+      min-width: 160px;
+      text-align: left;
+    }
+
+    .league-table td:last-child {
+      color: white;
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .club {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: #f5f5f5;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .club-mark {
+      display: grid;
+      flex: 0 0 34px;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 1px solid var(--team-color);
+      border-radius: 50%;
+      color: var(--team-color);
+      background: color-mix(in srgb, var(--team-color) 12%, #101010);
+      font: 800 10px "Orbitron", sans-serif;
+    }
+
+    .leader-row td:first-child {
+      border-left: 4px solid var(--red);
+      color: var(--red-light);
+    }
+
+    .leader-row {
+      background: rgba(230,0,35,.07);
+    }
+
+    .points-cell {
+      font-family: "Orbitron", sans-serif;
+    }
+
+    /* RESULTS */
+
+    .result-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+    }
+
+    .result-team {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font: 700 clamp(11px, 1.5vw, 16px) "Orbitron", sans-serif;
+    }
+
+    .result-team:last-child {
+      justify-content: flex-end;
+      text-align: right;
+    }
+
+    .result-score {
+      font: 900 clamp(24px, 4vw, 36px) "Orbitron", sans-serif;
+      white-space: nowrap;
+    }
+
+    .walkover {
+      display: inline-block;
+      margin-top: 7px;
+      padding: 4px 8px;
+      color: #ffb5bf;
+      background: rgba(230,0,35,.13);
+      border: 1px solid rgba(230,0,35,.35);
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .result-meta {
+      padding: 12px 20px;
+      color: #999;
+      background: #0b0b0b;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* TEAMS */
+
     .team-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -523,7 +543,7 @@
 
     .team-card strong {
       display: block;
-      font: 700 13px "Orbitron", sans-serif;
+      font: 700 12px "Orbitron", sans-serif;
       overflow-wrap: anywhere;
     }
 
@@ -542,7 +562,7 @@
       padding: 22px 0;
       border-top: 1px solid var(--border);
       color: #666;
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 1.5px;
     }
 
@@ -553,7 +573,7 @@
 
     @media (max-width: 950px) {
       .layout {
-        grid-template-columns: 190px minmax(0, 1fr);
+        grid-template-columns: 185px minmax(0, 1fr);
       }
 
       .sidebar {
@@ -562,11 +582,6 @@
 
       .team-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .match-card {
-        padding: 20px 14px;
-        gap: 8px;
       }
     }
 
@@ -580,16 +595,13 @@
         top: 0;
         width: 100%;
         height: auto;
-        padding: 12px 14px;
+        padding: 10px 12px;
         border-right: 0;
         border-bottom: 1px solid var(--border);
         backdrop-filter: blur(15px);
       }
 
       .brand {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
         padding: 2px 3px 10px;
         border-bottom: 0;
       }
@@ -599,9 +611,7 @@
       }
 
       .brand small {
-        margin: 0;
         font-size: 10px;
-        letter-spacing: 1px;
       }
 
       .nav-label,
@@ -613,7 +623,6 @@
         display: flex;
         gap: 6px;
         overflow-x: auto;
-        padding-bottom: 2px;
       }
 
       .nav a {
@@ -627,16 +636,16 @@
       }
 
       main {
-        padding: 22px 14px;
+        padding: 22px 12px;
       }
 
       .topline {
         margin-bottom: 18px;
-        font-size: 10px;
+        font-size: 9px;
       }
 
       .hero {
-        padding: 30px 22px;
+        padding: 30px 20px;
       }
 
       .hero-tag {
@@ -654,12 +663,12 @@
       }
 
       .stat {
-        padding: 12px 10px;
+        padding: 12px 9px;
       }
 
       .stat-label {
         font-size: 9px;
-        letter-spacing: .7px;
+        letter-spacing: .5px;
       }
 
       .stat-value {
@@ -675,49 +684,77 @@
       }
 
       .section-note {
-        max-width: 110px;
+        max-width: 115px;
         text-align: right;
-        font-size: 12px;
+        font-size: 11px;
       }
 
-      .match-card {
+      .league-table {
+        min-width: 0;
+      }
+
+      .league-table thead th {
+        padding: 14px 5px;
+        font-size: 11px;
+      }
+
+      .league-table td {
+        padding: 16px 5px;
+        font-size: 13px;
+      }
+
+      .league-table td:first-child {
+        width: 31px;
+      }
+
+      .league-table td:nth-child(2) {
+        min-width: 0;
+      }
+
+      .club {
+        gap: 7px;
+        font-size: 11px;
+        white-space: normal;
+      }
+
+      .club-mark {
+        flex-basis: 27px;
+        width: 27px;
+        height: 27px;
+        font-size: 8px;
+      }
+
+      .league-table td:last-child {
+        font-size: 14px;
+      }
+
+      .result-card {
         grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-        padding: 18px 10px;
-        gap: 6px;
+        gap: 5px;
+        padding: 18px 8px;
       }
 
-      .match-team {
-        display: flex;
+      .result-team {
         flex-direction: column;
         align-items: center;
-        gap: 8px;
-        font-size: 10px;
+        gap: 7px;
+        font-size: 9px;
         text-align: center;
         overflow-wrap: anywhere;
       }
 
-      .match-team:last-child {
+      .result-team:last-child {
         flex-direction: column;
         align-items: center;
         text-align: center;
       }
 
-      .team-badge {
-        flex-basis: 36px;
-        width: 36px;
-        height: 36px;
-      }
-
-      .match-center {
-        min-width: 85px;
-      }
-
-      .score {
+      .result-score {
         font-size: 22px;
       }
 
       .walkover {
-        font-size: 9px;
+        font-size: 8px;
         letter-spacing: .5px;
       }
 
@@ -733,7 +770,7 @@
       }
 
       .team-card strong {
-        font-size: 11px;
+        font-size: 10px;
       }
 
       footer {
@@ -761,10 +798,8 @@
   <div class="layout">
     <aside class="sidebar">
       <div class="brand">
-        <div>
-          <div class="brand-mark">VISKAN<span>.</span></div>
-          <small>Officiell ligasida</small>
-        </div>
+        <div class="brand-mark">VISKAN<span>.</span></div>
+        <small>Officiell ligasida</small>
       </div>
 
       <div class="nav-label">Meny</div>
@@ -784,7 +819,7 @@
     <main>
       <div class="topline">
         <span>Fotboll • Gemenskap • Konkurrens</span>
-        <span class="season">SÄSONG 2026</span>
+        <span class="season">SÄSONG 2026/27</span>
       </div>
 
       <header class="hero">
@@ -805,7 +840,7 @@
         </div>
         <div class="stat">
           <div class="stat-label">Senaste vinnare</div>
-          <div class="stat-value red" style="font-size:clamp(13px,2vw,20px);margin-top:15px;">LA REMONTADA</div>
+          <div class="stat-value red" style="font-size:clamp(12px,2vw,20px);margin-top:15px;">LA REMONTADA</div>
         </div>
       </section>
 
@@ -833,55 +868,86 @@
             <div class="eyebrow">Aktuell ställning</div>
             <h2>Ligatabellen</h2>
           </div>
-          <div class="section-note">Uppdaterad efter senaste matchen</div>
+          <div class="section-note">Efter senaste matchen</div>
         </div>
 
         <div class="panel table-wrap">
-          <table>
+          <table class="league-table">
             <thead>
               <tr>
-                <th>#</th>
+                <th>Pos</th>
                 <th>Lag</th>
-                <th>M</th>
+                <th>S</th>
                 <th>V</th>
-                <th>O</th>
-                <th>F</th>
-                <th>GM</th>
-                <th>IM</th>
                 <th>MS</th>
-                <th>Poäng</th>
+                <th>P</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr class="leader-row">
                 <td>1</td>
-                <td><div class="table-team"><span class="mini-dot" style="--team-color:#e60023"></span>La Remontada</div></td>
-                <td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="points">3</td>
+                <td>
+                  <div class="club">
+                    <span class="club-mark" style="--team-color:#e60023">LR</span>
+                    La Remontada
+                  </div>
+                </td>
+                <td>1</td><td>1</td><td>0</td><td class="points-cell">3</td>
               </tr>
+
               <tr>
                 <td>2</td>
-                <td><div class="table-team"><span class="mini-dot" style="--team-color:#fff"></span>Boda FC</div></td>
-                <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="points">0</td>
+                <td>
+                  <div class="club">
+                    <span class="club-mark" style="--team-color:#f5f5f5">BF</span>
+                    Boda FC
+                  </div>
+                </td>
+                <td>0</td><td>0</td><td>0</td><td class="points-cell">0</td>
               </tr>
+
               <tr>
                 <td>3</td>
-                <td><div class="table-team"><span class="mini-dot" style="--team-color:#247bff"></span>IFK Sjöbo</div></td>
-                <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="points">0</td>
+                <td>
+                  <div class="club">
+                    <span class="club-mark" style="--team-color:#247bff">IS</span>
+                    IFK Sjöbo
+                  </div>
+                </td>
+                <td>0</td><td>0</td><td>0</td><td class="points-cell">0</td>
               </tr>
+
               <tr>
                 <td>4</td>
-                <td><div class="table-team"><span class="mini-dot" style="--team-color:#aaa"></span>Lall FC</div></td>
-                <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="points">0</td>
+                <td>
+                  <div class="club">
+                    <span class="club-mark" style="--team-color:#aaa">LF</span>
+                    Lall FC
+                  </div>
+                </td>
+                <td>0</td><td>0</td><td>0</td><td class="points-cell">0</td>
               </tr>
+
               <tr>
                 <td>5</td>
-                <td><div class="table-team"><span class="mini-dot" style="--team-color:#b65cff"></span>Torta FC</div></td>
-                <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="points">0</td>
+                <td>
+                  <div class="club">
+                    <span class="club-mark" style="--team-color:#b65cff">TF</span>
+                    Torta FC
+                  </div>
+                </td>
+                <td>0</td><td>0</td><td>0</td><td class="points-cell">0</td>
               </tr>
+
               <tr>
                 <td>6</td>
-                <td><div class="table-team"><span class="mini-dot" style="--team-color:#20c878"></span>Mardelli United</div></td>
-                <td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td class="points">0</td>
+                <td>
+                  <div class="club">
+                    <span class="club-mark" style="--team-color:#20c878">MU</span>
+                    Mardelli United
+                  </div>
+                </td>
+                <td>1</td><td>0</td><td>0</td><td class="points-cell">0</td>
               </tr>
             </tbody>
           </table>
@@ -894,28 +960,30 @@
             <div class="eyebrow">Senaste matcherna</div>
             <h2>Resultat</h2>
           </div>
-          <div class="section-note">Säsong 2026</div>
+          <div class="section-note">Säsong 2026/27</div>
         </div>
 
         <div class="panel">
           <article>
-            <div class="match-card">
-              <div class="match-team">
-                <span class="team-badge" style="--team-color:#e60023">LR</span>
+            <div class="result-card">
+              <div class="result-team">
+                <span class="club-mark" style="--team-color:#e60023">LR</span>
                 <span>LA REMONTADA</span>
               </div>
 
-              <div class="match-center">
-                <div class="score">3 – 0</div>
+              <div style="text-align:center">
+                <div class="result-score">3 – 0</div>
                 <span class="walkover">WALKOVER</span>
               </div>
 
-              <div class="match-team">
-                <span class="team-badge" style="--team-color:#20c878">MU</span>
+              <div class="result-team">
+                <span class="club-mark" style="--team-color:#20c878">MU</span>
                 <span>MARDELLI UNITED</span>
               </div>
             </div>
-            <div class="match-meta">La Remontada tilldelas segern genom walkover • 3 poäng</div>
+            <div class="result-meta">
+              La Remontada tilldelas segern genom walkover • 3 poäng
+            </div>
           </article>
         </div>
       </section>
@@ -931,32 +999,32 @@
 
         <div class="team-grid">
           <div class="team-card" style="--team-color:#e60023">
-            <span class="team-badge">LR</span>
+            <span class="club-mark">LR</span>
             <div><strong>LA REMONTADA</strong><small>3 poäng</small></div>
           </div>
 
-          <div class="team-card" style="--team-color:#fff">
-            <span class="team-badge">BF</span>
+          <div class="team-card" style="--team-color:#f5f5f5">
+            <span class="club-mark">BF</span>
             <div><strong>BODA FC</strong><small>0 poäng</small></div>
           </div>
 
           <div class="team-card" style="--team-color:#247bff">
-            <span class="team-badge">IS</span>
+            <span class="club-mark">IS</span>
             <div><strong>IFK SJÖBO</strong><small>0 poäng</small></div>
           </div>
 
           <div class="team-card" style="--team-color:#20c878">
-            <span class="team-badge">MU</span>
+            <span class="club-mark">MU</span>
             <div><strong>MARDELLI UNITED</strong><small>0 poäng</small></div>
           </div>
 
           <div class="team-card" style="--team-color:#aaa">
-            <span class="team-badge">LF</span>
+            <span class="club-mark">LF</span>
             <div><strong>LALL FC</strong><small>0 poäng</small></div>
           </div>
 
           <div class="team-card" style="--team-color:#b65cff">
-            <span class="team-badge">TF</span>
+            <span class="club-mark">TF</span>
             <div><strong>TORTA FC</strong><small>0 poäng</small></div>
           </div>
         </div>
