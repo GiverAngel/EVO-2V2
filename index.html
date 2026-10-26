@@ -1,1881 +1,994 @@
 
-
 <!DOCTYPE html>
-
 <html lang="sv">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <meta name="theme-color" content="#050505">
-
+  <meta name="description" content="Viskan Ligan – för att skapa samhällen.">
   <title>Viskan Ligan | Officiell ligasida</title>
 
-  <meta name="description" content="Viskan Ligan – fotboll, gemenskap och konkurrens.">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-
     :root {
-
-      --bg: #050505;
-
-      --panel: #111111;
-
-      --line: #292929;
-
-      --white: #f7f7f7;
-
-      --muted: #999999;
-
       --red: #e60023;
-
-      --blue: #3988ff;
-
-      --green: #30d875;
-
-      --purple: #b878ff;
-
+      --red-light: #ff2847;
+      --bg: #050505;
+      --panel: #101010;
+      --panel-light: #171717;
+      --border: #292929;
+      --muted: #888;
+      --white: #f5f5f5;
     }
 
     * {
-
       box-sizing: border-box;
-
       margin: 0;
-
       padding: 0;
-
     }
 
     html {
-
       scroll-behavior: smooth;
-
       scroll-padding-top: 25px;
-
     }
 
     body {
-
       min-height: 100vh;
-
-      background:
-
-        radial-gradient(ellipse at 75% 0%, #250009 0%, transparent 40%),
-
-        var(--bg);
-
+      background: var(--bg);
       color: var(--white);
-
-      font-family: 'Rajdhani', sans-serif;
-
-      font-size: 18px;
-
+      font-family: "Rajdhani", sans-serif;
       overflow-x: hidden;
+    }
 
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 80% 5%, rgba(230,0,35,.13), transparent 35%),
+        radial-gradient(ellipse at 5% 50%, rgba(230,0,35,.06), transparent 30%),
+        #050505;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .13;
+      background-image:
+        linear-gradient(30deg, transparent 48%, #e60023 49%, transparent 50%),
+        linear-gradient(150deg, transparent 48%, #e60023 49%, transparent 50%);
+      background-size: 95px 165px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
     }
 
     a {
-
       color: inherit;
-
       text-decoration: none;
-
     }
 
-    ::selection {
-
-      background: var(--red);
-
-      color: white;
-
+    button {
+      font: inherit;
     }
 
-    /* ANIMATED BACKGROUND */
-
-    .triangle-field {
-
-      position: fixed;
-
-      inset: 0;
-
-      overflow: hidden;
-
-      pointer-events: none;
-
-      z-index: -1;
-
-    }
-
-    .triangle {
-
-      position: absolute;
-
-      width: 0;
-
-      height: 0;
-
-      border-left: var(--size, 15px) solid transparent;
-
-      border-right: var(--size, 15px) solid transparent;
-
-      border-bottom: calc(var(--size, 15px) * 1.7)
-
-        solid var(--color, rgba(230, 0, 35, .2));
-
-      filter: drop-shadow(0 0 10px rgba(230, 0, 35, .2));
-
-      animation: float var(--duration, 20s) linear infinite;
-
-    }
-
-    .triangle:nth-child(1) {
-
-      left: 8%; --size: 14px; --duration: 20s;
-
-    }
-
-    .triangle:nth-child(2) {
-
-      left: 21%; --size: 24px; --duration: 27s;
-
-      --color: rgba(255,255,255,.13);
-
-    }
-
-    .triangle:nth-child(3) {
-
-      left: 39%; --size: 11px; --duration: 17s;
-
-    }
-
-    .triangle:nth-child(4) {
-
-      left: 56%; --size: 19px; --duration: 24s;
-
-      --color: rgba(255,255,255,.12);
-
-    }
-
-    .triangle:nth-child(5) {
-
-      left: 73%; --size: 27px; --duration: 29s;
-
-    }
-
-    .triangle:nth-child(6) {
-
-      left: 90%; --size: 13px; --duration: 21s;
-
-      --color: rgba(255,255,255,.16);
-
-    }
-
-    .triangle:nth-child(7) {
-
-      left: 15%; --size: 20px; --duration: 31s;
-
-    }
-
-    .triangle:nth-child(8) {
-
-      left: 64%; --size: 10px; --duration: 16s;
-
-    }
-
-    @keyframes float {
-
-      from {
-
-        transform: translateY(110vh) rotate(0deg);
-
-      }
-
-      to {
-
-        transform: translateY(-150px) rotate(360deg);
-
-      }
-
-    }
-
-    /* MAIN LAYOUT */
-
-    .app {
-
+    .layout {
       display: grid;
-
       grid-template-columns: 235px minmax(0, 1fr);
-
-      max-width: 1500px;
-
       min-height: 100vh;
-
-      margin: 0 auto;
-
     }
 
-    aside {
-
+    .sidebar {
       position: sticky;
-
       top: 0;
-
       height: 100vh;
-
-      padding: 27px 16px;
-
+      padding: 28px 18px;
+      background: rgba(8,8,8,.94);
+      border-right: 1px solid var(--border);
       display: flex;
-
       flex-direction: column;
-
-      background: rgba(5,5,5,.88);
-
-      border-right: 1px solid var(--line);
-
-      backdrop-filter: blur(18px);
-
-      z-index: 5;
-
+      z-index: 10;
     }
 
     .brand {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 12px;
-
-      padding: 5px 8px 30px;
-
+      padding: 5px 12px 30px;
+      border-bottom: 1px solid var(--border);
     }
 
     .brand-mark {
-
-      width: 44px;
-
-      height: 44px;
-
-      display: grid;
-
-      place-items: center;
-
-      border-radius: 12px;
-
-      background: linear-gradient(145deg, #ff183a, #a90019);
-
-      box-shadow: 0 0 25px rgba(230,0,35,.3);
-
-      font: 800 21px Orbitron, sans-serif;
-
+      font: 900 24px "Orbitron", sans-serif;
+      letter-spacing: -1px;
     }
 
-    .brand-name {
-
-      font: 800 13px/1.5 Orbitron, sans-serif;
-
-      letter-spacing: 1px;
-
-    }
-
-    .brand-name span {
-
-      display: block;
-
+    .brand-mark span {
       color: var(--red);
+    }
 
-      font-size: 9px;
-
-      letter-spacing: 3px;
-
+    .brand small {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     .nav-label {
-
+      margin: 28px 12px 12px;
       color: #666;
-
-      font: 700 10px Orbitron, sans-serif;
-
-      letter-spacing: 3px;
-
-      padding: 0 12px 12px;
-
-    }
-
-    nav {
-
-      display: grid;
-
-      gap: 7px;
-
-    }
-
-    nav a {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 12px;
-
-      padding: 13px 12px;
-
-      color: #aaa;
-
-      border: 1px solid transparent;
-
-      border-radius: 10px;
-
-      font-size: 18px;
-
+      font-size: 11px;
       font-weight: 700;
-
-      transition: .2s;
-
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
-    nav a:hover,
+    .nav {
+      display: grid;
+      gap: 7px;
+    }
 
-    nav a.active {
+    .nav a {
+      padding: 13px 14px;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      color: #aaa;
+      font-size: 17px;
+      font-weight: 700;
+      transition: .2s ease;
+    }
 
+    .nav a:hover,
+    .nav a.active {
       color: white;
-
-      background: rgba(230,0,35,.10);
-
-      border-color: rgba(230,0,35,.28);
-
+      background: rgba(230,0,35,.11);
+      border-color: rgba(230,0,35,.35);
     }
 
-    .nav-icon {
-
-      width: 22px;
-
-      color: var(--red);
-
-      text-align: center;
-
+    .nav a.active {
+      box-shadow: inset 3px 0 var(--red);
     }
 
     .sidebar-bottom {
-
       margin-top: auto;
-
-      padding: 16px 12px 5px;
-
-      border-top: 1px solid var(--line);
-
+      padding: 18px 12px 0;
+      border-top: 1px solid var(--border);
     }
 
-    .status {
-
-      color: #bbb;
-
-      font-size: 14px;
-
-    }
-
-    .status-dot {
-
+    .live-dot {
       display: inline-block;
-
       width: 7px;
-
       height: 7px;
-
       margin-right: 7px;
-
       border-radius: 50%;
+      background: #36d879;
+      box-shadow: 0 0 10px #36d879;
+    }
 
-      background: var(--red);
-
-      box-shadow: 0 0 10px var(--red);
-
+    .sidebar-bottom p {
+      color: #aaa;
+      font-size: 14px;
     }
 
     .sidebar-bottom small {
-
       display: block;
-
-      color: #666;
-
-      margin-top: 8px;
-
-      font-size: 12px;
-
+      margin-top: 10px;
+      color: #555;
+      font-size: 11px;
+      letter-spacing: 1px;
     }
 
     main {
-
-      min-width: 0;
-
-      padding: 30px clamp(16px, 4vw, 50px) 25px;
-
+      width: 100%;
+      max-width: 1450px;
+      padding: 35px clamp(18px, 4vw, 60px) 25px;
+      margin: 0 auto;
     }
 
     .topline {
-
       display: flex;
-
       justify-content: space-between;
-
       align-items: center;
-
-      gap: 12px;
-
-      margin-bottom: 25px;
-
-    }
-
-    .eyebrow {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 9px;
-
-      color: #aaa;
-
-      font: 600 10px Orbitron, sans-serif;
-
-      letter-spacing: 2px;
-
-    }
-
-    .eyebrow::before {
-
-      content: "";
-
-      width: 22px;
-
-      height: 2px;
-
-      background: var(--red);
-
-      box-shadow: 0 0 10px var(--red);
-
+      gap: 15px;
+      margin-bottom: 30px;
+      color: #999;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
     }
 
     .season {
-
-      padding: 8px 12px;
-
-      color: #bbb;
-
-      background: #111;
-
-      border: 1px solid var(--line);
-
-      border-radius: 8px;
-
-      font-size: 13px;
-
+      padding: 7px 11px;
+      border: 1px solid #333;
+      border-radius: 5px;
+      color: #ccc;
       white-space: nowrap;
-
     }
 
-    /* HERO */
-
     .hero {
-
       position: relative;
-
+      padding: clamp(28px, 6vw, 75px) clamp(22px, 5vw, 60px);
       overflow: hidden;
-
-      padding: clamp(27px, 5vw, 58px);
-
-      margin-bottom: 23px;
-
-      border: 1px solid rgba(230,0,35,.3);
-
-      border-radius: 22px;
-
       background:
-
-        linear-gradient(115deg, #161616, #0a0a0a 65%, #260008);
-
-      box-shadow: 0 20px 60px rgba(0,0,0,.2);
-
+        linear-gradient(110deg, rgba(230,0,35,.17), transparent 60%),
+        #101010;
+      border: 1px solid #333;
+      border-radius: 13px;
     }
 
     .hero::after {
-
       content: "VL";
-
       position: absolute;
-
+      right: 4%;
       top: 50%;
-
-      right: 5%;
-
       transform: translateY(-50%);
-
       color: rgba(255,255,255,.025);
-
-      font: 800 clamp(100px, 20vw, 240px)/1 Orbitron, sans-serif;
-
+      font: 900 clamp(150px, 24vw, 330px) "Orbitron", sans-serif;
       pointer-events: none;
-
     }
 
     .hero-tag {
-
-      display: inline-block;
-
-      padding: 8px 11px;
-
-      color: #ff6378;
-
-      background: rgba(230,0,35,.09);
-
-      border: 1px solid rgba(230,0,35,.3);
-
-      border-radius: 6px;
-
-      font: 600 10px Orbitron, sans-serif;
-
-      letter-spacing: 1px;
-
+      position: relative;
+      z-index: 1;
+      color: var(--red-light);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
     }
 
     h1 {
-
       position: relative;
-
       z-index: 1;
-
-      margin: 22px 0 9px;
-
-      font: 800 clamp(32px, 5.5vw, 66px)/1.1 Orbitron, sans-serif;
-
+      margin: 18px 0 12px;
+      font: 900 clamp(35px, 7vw, 80px)/1.05 "Orbitron", sans-serif;
       letter-spacing: -2px;
-
     }
 
     h1 span {
-
+      display: block;
       color: var(--red);
-
-      text-shadow: 0 0 30px rgba(230,0,35,.35);
-
+      text-shadow: 0 0 35px rgba(230,0,35,.3);
     }
 
-    .subtitle {
-
+    .hero p {
       position: relative;
-
       z-index: 1;
-
-      color: #bbb;
-
-      font-size: clamp(19px, 2.4vw, 25px);
-
-      font-weight: 600;
-
+      color: #aaa;
+      font-size: clamp(17px, 2vw, 22px);
     }
 
     .hero-line {
-
-      width: 95px;
-
-      height: 3px;
-
+      position: relative;
+      z-index: 1;
+      width: 65px;
+      height: 4px;
       margin-top: 25px;
-
-      background: linear-gradient(90deg, var(--red), transparent);
-
+      background: var(--red);
+      box-shadow: 0 0 15px rgba(230,0,35,.5);
     }
 
-    /* STATISTICS */
-
-    .stats-grid {
-
+    .stats {
       display: grid;
-
-      grid-template-columns: repeat(3, minmax(0,1fr));
-
-      gap: 12px;
-
-      margin-bottom: 40px;
-
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 22px 0 42px;
     }
 
     .stat {
-
-      min-width: 0;
-
-      padding: 18px;
-
-      background: rgba(16,16,16,.92);
-
-      border: 1px solid var(--line);
-
-      border-radius: 14px;
-
+      padding: 19px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 9px;
     }
 
-    .stat-top {
-
-      display: flex;
-
-      justify-content: space-between;
-
-      gap: 5px;
-
-      color: #aaa;
-
-      font-size: 15px;
-
-      font-weight: 600;
-
+    .stat-label {
+      color: #888;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
     }
 
-    .stat-icon {
-
-      color: var(--red);
-
+    .stat-value {
+      margin-top: 9px;
+      font: 800 clamp(23px, 3vw, 35px) "Orbitron", sans-serif;
     }
 
-    .stat-number {
-
-      margin-top: 12px;
-
-      font: 700 clamp(24px,3vw,35px) Orbitron, sans-serif;
-
+    .stat-value.red {
+      color: var(--red-light);
     }
 
-    .stat-caption {
-
-      margin-top: 5px;
-
-      color: #666;
-
-      font-size: 13px;
-
-    }
-
-    /* SECTIONS */
-
-    section {
-
-      margin-bottom: 42px;
-
+    .section {
+      margin-top: 44px;
       scroll-margin-top: 25px;
-
     }
 
-    .section-head {
-
+    .section-heading {
       display: flex;
-
       justify-content: space-between;
-
       align-items: end;
-
-      gap: 12px;
-
-      margin-bottom: 16px;
-
+      gap: 15px;
+      margin-bottom: 20px;
     }
 
-    .section-kicker {
-
-      margin-bottom: 7px;
-
-      color: var(--red);
-
-      font: 700 10px Orbitron, sans-serif;
-
-      letter-spacing: 2px;
-
+    .eyebrow {
+      color: var(--red-light);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
     }
 
     h2 {
-
-      font: 700 clamp(21px,3vw,28px) Orbitron, sans-serif;
-
-      letter-spacing: -1px;
-
+      margin-top: 7px;
+      font: 800 clamp(22px, 3vw, 30px) "Orbitron", sans-serif;
     }
 
-    .section-desc {
-
-      margin-top: 5px;
-
+    .section-note {
       color: #777;
-
-      font-size: 16px;
-
+      font-size: 14px;
     }
 
     .panel {
-
+      background: rgba(16,16,16,.93);
+      border: 1px solid var(--border);
+      border-radius: 10px;
       overflow: hidden;
-
-      background: rgba(17,17,17,.94);
-
-      border: 1px solid var(--line);
-
-      border-radius: 16px;
-
     }
 
-    .empty-state {
-
-      padding: 30px 20px;
-
-      color: #999;
-
-      text-align: center;
-
-    }
-
-    .empty-state strong {
-
-      display: block;
-
-      margin-bottom: 5px;
-
-      color: #eee;
-
-      font-size: 20px;
-
-    }
-
-    .empty-icon {
-
+    .match-card {
       display: grid;
-
-      place-items: center;
-
-      width: 44px;
-
-      height: 44px;
-
-      margin: 0 auto 12px;
-
-      color: #ff4560;
-
-      background: rgba(230,0,35,.1);
-
-      border-radius: 13px;
-
-      font-size: 22px;
-
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
     }
 
-    /* LEAGUE TABLE */
+    .match-team {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font: 700 clamp(13px, 2vw, 18px) "Orbitron", sans-serif;
+    }
+
+    .match-team:last-child {
+      justify-content: flex-end;
+      text-align: right;
+    }
+
+    .team-badge {
+      display: grid;
+      flex: 0 0 42px;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border: 1px solid var(--team-color, var(--red));
+      border-radius: 8px;
+      color: var(--team-color, var(--red));
+      background: color-mix(in srgb, var(--team-color, var(--red)) 12%, #111);
+      font: 800 12px "Orbitron", sans-serif;
+    }
+
+    .match-center {
+      min-width: 110px;
+      text-align: center;
+    }
+
+    .score {
+      font: 900 clamp(24px, 4vw, 36px) "Orbitron", sans-serif;
+      white-space: nowrap;
+    }
+
+    .walkover {
+      display: inline-block;
+      margin-top: 7px;
+      padding: 4px 8px;
+      color: #ffb5bf;
+      background: rgba(230,0,35,.13);
+      border: 1px solid rgba(230,0,35,.35);
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .match-meta {
+      padding: 12px 20px;
+      color: #999;
+      background: #0b0b0b;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      text-align: center;
+    }
 
     .table-wrap {
-
       overflow-x: auto;
-
     }
 
     table {
-
       width: 100%;
-
-      min-width: 570px;
-
+      min-width: 700px;
       border-collapse: collapse;
-
+      font-size: 15px;
     }
 
     th {
-
       padding: 15px 12px;
+      color: #888;
+      background: #0b0b0b;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-align: center;
+      text-transform: uppercase;
+    }
 
-      color: #777;
-
-      background: rgba(255,255,255,.025);
-
-      font: 600 10px Orbitron, sans-serif;
-
-      white-space: nowrap;
-
+    th:nth-child(2),
+    td:nth-child(2) {
+      text-align: left;
     }
 
     td {
-
-      padding: 14px 12px;
-
-      border-top: 1px solid rgba(255,255,255,.055);
-
-      font-weight: 600;
-
-      white-space: nowrap;
-
-    }
-
-    td:not(:nth-child(2)),
-
-    th:not(:nth-child(2)) {
-
+      padding: 15px 12px;
+      border-top: 1px solid #242424;
+      color: #ccc;
       text-align: center;
-
     }
 
-    tbody tr:hover {
-
-      background: rgba(255,255,255,.025);
-
+    tbody tr:first-child {
+      background: rgba(230,0,35,.07);
     }
 
-    .rank {
-
-      color: #777;
-
-      font: 700 12px Orbitron, sans-serif;
-
+    tbody tr:first-child td:first-child {
+      color: var(--red-light);
+      font-weight: 700;
     }
 
-    .team-cell {
-
+    .table-team {
       display: flex;
-
       align-items: center;
-
-      gap: 9px;
-
+      gap: 10px;
+      color: white;
+      font-weight: 700;
     }
 
-    .team-dot {
-
-      flex: 0 0 auto;
-
-      width: 9px;
-
-      height: 9px;
-
-      border-radius: 3px;
-
-      box-shadow: 0 0 10px currentColor;
-
+    .mini-dot {
+      flex: 0 0 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--team-color);
+      box-shadow: 0 0 8px var(--team-color);
     }
 
     .points {
-
-      font: 700 15px Orbitron, sans-serif;
-
+      color: white;
+      font: 800 17px "Orbitron", sans-serif;
     }
 
-    /* TEAM CARDS */
+    .empty {
+      padding: 32px 20px;
+      text-align: center;
+    }
 
-    .teams-grid {
-
+    .empty-icon {
       display: grid;
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 14px;
+      place-items: center;
+      border: 1px solid #333;
+      border-radius: 12px;
+      color: var(--red-light);
+      font-size: 22px;
+    }
 
-      grid-template-columns: repeat(3,minmax(0,1fr));
+    .empty h3 {
+      font: 700 16px "Orbitron", sans-serif;
+    }
 
+    .empty p {
+      margin-top: 7px;
+      color: #777;
+      font-size: 15px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 13px;
-
     }
 
     .team-card {
-
-      --team-color: #e60023;
-
-      position: relative;
-
-      overflow: hidden;
-
-      padding: 19px;
-
-      background: linear-gradient(145deg,#151515,#0b0b0b);
-
-      border: 1px solid var(--line);
-
-      border-radius: 15px;
-
-      transition: .2s;
-
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-height: 90px;
+      padding: 17px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      transition: .2s ease;
     }
 
     .team-card:hover {
-
       transform: translateY(-3px);
-
       border-color: var(--team-color);
-
     }
 
-    .team-card::after {
-
-      content: "";
-
-      position: absolute;
-
-      right: -35px;
-
-      bottom: -45px;
-
-      width: 90px;
-
-      height: 90px;
-
-      border-radius: 50%;
-
-      background: var(--team-color);
-
-      filter: blur(45px);
-
-      opacity: .2;
-
-      pointer-events: none;
-
+    .team-card strong {
+      display: block;
+      font: 700 13px "Orbitron", sans-serif;
+      overflow-wrap: anywhere;
     }
 
-    .team-card-top {
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 8px;
-
-    }
-
-    .team-emblem {
-
-      display: grid;
-
-      place-items: center;
-
-      width: 43px;
-
-      height: 43px;
-
-      color: var(--team-color);
-
-      background: #1c1c1c;
-
-      border: 1px solid #333;
-
-      border-radius: 12px;
-
-      font: 800 12px Orbitron, sans-serif;
-
-    }
-
-    .team-number {
-
-      color: #555;
-
-      font: 600 10px Orbitron, sans-serif;
-
-    }
-
-    .team-card h3 {
-
-      margin: 17px 0 4px;
-
-      font: 700 13px Orbitron, sans-serif;
-
-      line-height: 1.5;
-
-    }
-
-    .team-card p {
-
+    .team-card small {
+      display: block;
+      margin-top: 6px;
       color: #777;
-
-      font-size: 14px;
-
+      font-size: 13px;
     }
-
-    /* FOOTER */
 
     footer {
-
       display: flex;
-
       justify-content: space-between;
-
-      gap: 12px;
-
-      padding: 20px 0 8px;
-
-      color: #777;
-
-      border-top: 1px solid var(--line);
-
-      font: 600 10px Orbitron, sans-serif;
-
-      letter-spacing: 1px;
-
+      gap: 15px;
+      margin-top: 55px;
+      padding: 22px 0;
+      border-top: 1px solid var(--border);
+      color: #666;
+      font-size: 11px;
+      letter-spacing: 1.5px;
     }
 
-    footer span {
-
-      color: var(--red);
-
+    footer span:last-child {
+      color: var(--red-light);
+      text-align: right;
     }
-
-    /* MOBILE */
 
     @media (max-width: 950px) {
-
-      .app {
-
-        grid-template-columns: 200px minmax(0,1fr);
-
+      .layout {
+        grid-template-columns: 190px minmax(0, 1fr);
       }
 
-      aside {
-
-        padding: 22px 12px;
-
+      .sidebar {
+        padding: 23px 12px;
       }
 
-      main {
-
-        padding: 24px 18px;
-
+      .team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .teams-grid {
-
-        grid-template-columns: repeat(2,minmax(0,1fr));
-
+      .match-card {
+        padding: 20px 14px;
+        gap: 8px;
       }
-
     }
 
-    @media (max-width: 680px) {
-
-      .app {
-
+    @media (max-width: 650px) {
+      .layout {
         display: block;
-
-        padding-bottom: 76px;
-
       }
 
-      aside {
-
-        position: fixed;
-
-        top: auto;
-
-        bottom: 0;
-
-        left: 0;
-
-        right: 0;
-
+      .sidebar {
+        position: sticky;
+        top: 0;
         width: 100%;
-
         height: auto;
-
-        padding: 8px 9px calc(8px + env(safe-area-inset-bottom));
-
+        padding: 12px 14px;
         border-right: 0;
-
-        border-top: 1px solid #292929;
-
-        background: rgba(7,7,7,.96);
-
-        backdrop-filter: blur(22px);
-
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(15px);
       }
 
-      .brand,
+      .brand {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2px 3px 10px;
+        border-bottom: 0;
+      }
+
+      .brand-mark {
+        font-size: 19px;
+      }
+
+      .brand small {
+        margin: 0;
+        font-size: 10px;
+        letter-spacing: 1px;
+      }
 
       .nav-label,
-
       .sidebar-bottom {
-
         display: none;
-
       }
 
-      nav {
-
-        grid-template-columns: repeat(4,minmax(0,1fr));
-
-        gap: 3px;
-
+      .nav {
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+        padding-bottom: 2px;
       }
 
-      nav a {
-
-        flex-direction: column;
-
-        justify-content: center;
-
-        gap: 4px;
-
-        padding: 8px 3px;
-
-        font-size: 12px;
-
+      .nav a {
+        flex: 0 0 auto;
+        padding: 8px 12px;
+        font-size: 14px;
       }
 
-      .nav-icon {
-
-        font-size: 18px;
-
+      .nav a.active {
+        box-shadow: inset 0 -2px var(--red);
       }
 
       main {
-
-        padding: 20px 14px;
-
+        padding: 22px 14px;
       }
 
       .topline {
-
-        margin-bottom: 17px;
-
+        margin-bottom: 18px;
+        font-size: 10px;
       }
 
       .hero {
+        padding: 30px 22px;
+      }
 
-        padding: 28px 20px;
-
-        border-radius: 18px;
-
+      .hero-tag {
+        font-size: 10px;
+        letter-spacing: 2px;
       }
 
       h1 {
-
-        font-size: clamp(30px,9vw,48px);
-
+        letter-spacing: -1px;
       }
 
-      .stats-grid {
-
+      .stats {
         gap: 8px;
-
         margin-bottom: 32px;
-
       }
 
       .stat {
-
-        padding: 12px 9px;
-
-        border-radius: 11px;
-
+        padding: 12px 10px;
       }
 
-      .stat-top {
+      .stat-label {
+        font-size: 9px;
+        letter-spacing: .7px;
+      }
 
+      .stat-value {
+        font-size: 19px;
+      }
+
+      .section {
+        margin-top: 34px;
+      }
+
+      .section-heading {
+        align-items: start;
+      }
+
+      .section-note {
+        max-width: 110px;
+        text-align: right;
         font-size: 12px;
-
       }
 
-      .stat-icon {
-
-        display: none;
-
+      .match-card {
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        padding: 18px 10px;
+        gap: 6px;
       }
 
-      .stat-number {
-
-        font-size: clamp(20px,6vw,28px);
-
-        margin-top: 9px;
-
+      .match-team {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        font-size: 10px;
+        text-align: center;
+        overflow-wrap: anywhere;
       }
 
-      .stat-caption {
-
-        font-size: 11px;
-
+      .match-team:last-child {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
 
-      .matches-grid {
-
-        grid-template-columns: 1fr;
-
+      .team-badge {
+        flex-basis: 36px;
+        width: 36px;
+        height: 36px;
       }
 
-      .teams-grid {
+      .match-center {
+        min-width: 85px;
+      }
 
-        grid-template-columns: repeat(2,minmax(0,1fr));
+      .score {
+        font-size: 22px;
+      }
 
+      .walkover {
+        font-size: 9px;
+        letter-spacing: .5px;
+      }
+
+      .team-grid {
         gap: 9px;
-
       }
 
       .team-card {
-
-        padding: 14px;
-
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 13px;
       }
 
-      .team-card h3 {
-
+      .team-card strong {
         font-size: 11px;
-
-        overflow-wrap: anywhere;
-
-      }
-
-      .team-card p {
-
-        font-size: 12px;
-
-      }
-
-      .team-emblem {
-
-        width: 37px;
-
-        height: 37px;
-
-      }
-
-      .section-desc {
-
-        font-size: 14px;
-
       }
 
       footer {
-
         flex-direction: column;
-
-        line-height: 1.8;
-
+        font-size: 9px;
       }
 
+      footer span:last-child {
+        text-align: left;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-
-      *, *::before, *::after {
-
-        animation-duration: .01ms !important;
-
-        animation-iteration-count: 1 !important;
-
+      *,
+      *::before,
+      *::after {
         scroll-behavior: auto !important;
-
-        transition-duration: .01ms !important;
-
+        transition: none !important;
       }
-
     }
-
   </style>
-
 </head>
 
 <body>
-
-  <div class="triangle-field" aria-hidden="true">
-
-    <i class="triangle"></i>
-
-    <i class="triangle"></i>
-
-    <i class="triangle"></i>
-
-    <i class="triangle"></i>
-
-    <i class="triangle"></i>
-
-    <i class="triangle"></i>
-
-    <i class="triangle"></i>
-
-    <i class="triangle"></i>
-
-  </div>
-
-  <div class="app">
-
-    <!-- SIDEBAR -->
-
-    <aside>
-
+  <div class="layout">
+    <aside class="sidebar">
       <div class="brand">
-
-        <div class="brand-mark">V</div>
-
-        <div class="brand-name">
-
-          VISKAN LIGAN
-
-          <span>OFFICIELL LIGA</span>
-
+        <div>
+          <div class="brand-mark">VISKAN<span>.</span></div>
+          <small>Officiell ligasida</small>
         </div>
-
       </div>
 
-      <div class="nav-label">NAVIGATION</div>
-
-      <nav aria-label="Huvudmeny">
-
-        <a href="#matcher" class="active">
-
-          <span class="nav-icon">◷</span>Matcher
-
-        </a>
-
-        <a href="#tabellen">
-
-          <span class="nav-icon">▤</span>Tabellen
-
-        </a>
-
-        <a href="#resultat">
-
-          <span class="nav-icon">◈</span>Resultat
-
-        </a>
-
-        <a href="#lag">
-
-          <span class="nav-icon">♧</span>Lag
-
-        </a>
-
+      <div class="nav-label">Meny</div>
+      <nav class="nav" aria-label="Huvudmeny">
+        <a href="#matcher">Matcher</a>
+        <a href="#tabellen" class="active">Tabellen</a>
+        <a href="#resultat">Resultat</a>
+        <a href="#lag">Lag</a>
       </nav>
 
       <div class="sidebar-bottom">
-
-        <div class="status">
-
-          <span class="status-dot"></span>LIGASIDA
-
-        </div>
-
-        <small>Fotboll • Gemenskap • Konkurrens</small>
-
+        <p><span class="live-dot"></span>Ligan är igång</p>
+        <small>FÖR ATT SKAPA SAMHÄLLEN</small>
       </div>
-
     </aside>
 
-    <!-- MAIN CONTENT -->
-
     <main>
-
       <div class="topline">
-
-        <div class="eyebrow">DEN OFFICIELLA LIGASIDAN</div>
-
-        <div class="season">SÄSONG 2026</div>
-
+        <span>Fotboll • Gemenskap • Konkurrens</span>
+        <span class="season">SÄSONG 2026</span>
       </div>
-
-      <!-- HERO -->
 
       <header class="hero">
-
-        <div class="hero-tag">
-
-          ● FOTBOLL • GEMENSKAP • KONKURRENS
-
-        </div>
-
+        <div class="hero-tag">En liga. En gemenskap.</div>
         <h1>VISKAN <span>LIGAN</span></h1>
-
-        <p class="subtitle">för att skapa samhällen</p>
-
+        <p>för att skapa samhällen</p>
         <div class="hero-line"></div>
-
       </header>
 
-      <!-- STATISTICS -->
-
-      <div class="stats-grid">
-
+      <section class="stats" aria-label="Ligastatistik">
         <div class="stat">
-
-          <div class="stat-top">
-
-            Antal lag <span class="stat-icon">♧</span>
-
-          </div>
-
-          <div class="stat-number">06</div>
-
-          <div class="stat-caption">I kampen om titeln</div>
-
+          <div class="stat-label">Registrerade lag</div>
+          <div class="stat-value">06</div>
         </div>
-
         <div class="stat">
-
-          <div class="stat-top">
-
-            Matcher spelade <span class="stat-icon">◷</span>
-
-          </div>
-
-          <div class="stat-number">00</div>
-
-          <div class="stat-caption">Matcher spelade</div>
-
+          <div class="stat-label">Spelade matcher</div>
+          <div class="stat-value">01</div>
         </div>
-
         <div class="stat">
-
-          <div class="stat-top">
-
-            Nästa match <span class="stat-icon">⚽</span>
-
-          </div>
-
-          <div class="stat-number">—</div>
-
-          <div class="stat-caption">Kommer att publiceras här</div>
-
+          <div class="stat-label">Senaste vinnare</div>
+          <div class="stat-value red" style="font-size:clamp(13px,2vw,20px);margin-top:15px;">LA REMONTADA</div>
         </div>
+      </section>
 
-      </div>
-
-      <!-- MATCHES -->
-
-      <section id="matcher">
-
-        <div class="section-head">
-
+      <section class="section" id="matcher">
+        <div class="section-heading">
           <div>
-
-            <div class="section-kicker">PÅ PLANEN</div>
-
+            <div class="eyebrow">Spelschema</div>
             <h2>Matcher</h2>
-
-            <p class="section-desc">
-
-              Kommande matcher och spelschema.
-
-            </p>
-
           </div>
-
+          <div class="section-note">Kommande matcher</div>
         </div>
 
         <div class="panel">
-
-          <div class="empty-state">
-
-            <div class="empty-icon">◷</div>
-
-            <strong>Inga kommande matcher ännu</strong>
-
-            Nya matcher publiceras här när spelschemat är klart.
-
+          <div class="empty">
+            <div class="empty-icon">⌁</div>
+            <h3>Inga kommande matcher</h3>
+            <p>Nya matcher publiceras här när de är planerade.</p>
           </div>
-
         </div>
-
       </section>
 
-      <!-- LEAGUE TABLE -->
-
-      <section id="tabellen">
-
-        <div class="section-head">
-
+      <section class="section" id="tabellen">
+        <div class="section-heading">
           <div>
-
-            <div class="section-kicker">JAKTEN PÅ TOPPEN</div>
-
+            <div class="eyebrow">Aktuell ställning</div>
             <h2>Ligatabellen</h2>
-
-            <p class="section-desc">
-
-              Alla lag börjar på noll.
-
-            </p>
-
           </div>
-
+          <div class="section-note">Uppdaterad efter senaste matchen</div>
         </div>
 
         <div class="panel table-wrap">
-
           <table>
-
             <thead>
-
               <tr>
-
                 <th>#</th>
-
                 <th>Lag</th>
-
                 <th>M</th>
-
                 <th>V</th>
-
                 <th>O</th>
-
                 <th>F</th>
-
                 <th>GM</th>
-
                 <th>IM</th>
-
                 <th>MS</th>
-
                 <th>Poäng</th>
-
               </tr>
-
             </thead>
-
             <tbody>
-
               <tr>
-
-                <td class="rank">01</td>
-
-                <td><div class="team-cell">
-
-                  <span class="team-dot" style="color:#e60023;background:#e60023"></span>
-
-                  LA REMONTADA
-
-                </div></td>
-
-                <td>0</td><td>0</td><td>0</td><td>0</td>
-
-                <td>0</td><td>0</td><td>0</td>
-
-                <td class="points">0</td>
-
+                <td>1</td>
+                <td><div class="table-team"><span class="mini-dot" style="--team-color:#e60023"></span>La Remontada</div></td>
+                <td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="points">3</td>
               </tr>
-
               <tr>
-
-                <td class="rank">02</td>
-
-                <td><div class="team-cell">
-
-                  <span class="team-dot" style="color:#ffffff;background:#ffffff"></span>
-
-                  BODA FC
-
-                </div></td>
-
-                <td>0</td><td>0</td><td>0</td><td>0</td>
-
-                <td>0</td><td>0</td><td>0</td>
-
-                <td class="points">0</td>
-
+                <td>2</td>
+                <td><div class="table-team"><span class="mini-dot" style="--team-color:#fff"></span>Boda FC</div></td>
+                <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="points">0</td>
               </tr>
-
               <tr>
-
-                <td class="rank">03</td>
-
-                <td><div class="team-cell">
-
-                  <span class="team-dot" style="color:#3988ff;background:#3988ff"></span>
-
-                  IFK SJÖBO
-
-                </div></td>
-
-                <td>0</td><td>0</td><td>0</td><td>0</td>
-
-                <td>0</td><td>0</td><td>0</td>
-
-                <td class="points">0</td>
-
+                <td>3</td>
+                <td><div class="table-team"><span class="mini-dot" style="--team-color:#247bff"></span>IFK Sjöbo</div></td>
+                <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="points">0</td>
               </tr>
-
               <tr>
-
-                <td class="rank">04</td>
-
-                <td><div class="team-cell">
-
-                  <span class="team-dot" style="color:#30d875;background:#30d875"></span>
-
-                  MARDELLI UNITED
-
-                </div></td>
-
-                <td>0</td><td>0</td><td>0</td><td>0</td>
-
-                <td>0</td><td>0</td><td>0</td>
-
-                <td class="points">0</td>
-
+                <td>4</td>
+                <td><div class="table-team"><span class="mini-dot" style="--team-color:#aaa"></span>Lall FC</div></td>
+                <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="points">0</td>
               </tr>
-
               <tr>
-
-                <td class="rank">05</td>
-
-                <td><div class="team-cell">
-
-                  <span class="team-dot" style="color:#bdbdbd;background:#bdbdbd"></span>
-
-                  LALL FC
-
-                </div></td>
-
-                <td>0</td><td>0</td><td>0</td><td>0</td>
-
-                <td>0</td><td>0</td><td>0</td>
-
-                <td class="points">0</td>
-
+                <td>5</td>
+                <td><div class="table-team"><span class="mini-dot" style="--team-color:#b65cff"></span>Torta FC</div></td>
+                <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="points">0</td>
               </tr>
-
               <tr>
-
-                <td class="rank">06</td>
-
-                <td><div class="team-cell">
-
-                  <span class="team-dot" style="color:#b878ff;background:#b878ff"></span>
-
-                  TORTA FC
-
-                </div></td>
-
-                <td>0</td><td>0</td><td>0</td><td>0</td>
-
-                <td>0</td><td>0</td><td>0</td>
-
-                <td class="points">0</td>
-
+                <td>6</td>
+                <td><div class="table-team"><span class="mini-dot" style="--team-color:#20c878"></span>Mardelli United</div></td>
+                <td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td class="points">0</td>
               </tr>
-
             </tbody>
-
           </table>
-
         </div>
-
       </section>
 
-      <!-- RESULTS -->
-
-      <section id="resultat">
-
-        <div class="section-head">
-
+      <section class="section" id="resultat">
+        <div class="section-heading">
           <div>
-
-            <div class="section-kicker">SENASTE SPELET</div>
-
+            <div class="eyebrow">Senaste matcherna</div>
             <h2>Resultat</h2>
-
-            <p class="section-desc">
-
-              Här publiceras resultaten när ligan har startat.
-
-            </p>
-
           </div>
-
+          <div class="section-note">Säsong 2026</div>
         </div>
 
         <div class="panel">
+          <article>
+            <div class="match-card">
+              <div class="match-team">
+                <span class="team-badge" style="--team-color:#e60023">LR</span>
+                <span>LA REMONTADA</span>
+              </div>
 
-          <div class="empty-state">
+              <div class="match-center">
+                <div class="score">3 – 0</div>
+                <span class="walkover">WALKOVER</span>
+              </div>
 
-            <div class="empty-icon">◈</div>
-
-            <strong>Inga resultat ännu</strong>
-
-            Inga matcher har spelats. Resultat och matchhistorik
-
-            visas här efter första matchen.
-
-          </div>
-
+              <div class="match-team">
+                <span class="team-badge" style="--team-color:#20c878">MU</span>
+                <span>MARDELLI UNITED</span>
+              </div>
+            </div>
+            <div class="match-meta">La Remontada tilldelas segern genom walkover • 3 poäng</div>
+          </article>
         </div>
-
       </section>
 
-      <!-- TEAMS -->
-
-      <section id="lag">
-
-        <div class="section-head">
-
+      <section class="section" id="lag">
+        <div class="section-heading">
           <div>
+            <div class="eyebrow">Deltagare</div>
+            <h2>Alla lag</h2>
+          </div>
+          <div class="section-note">6 registrerade lag</div>
+        </div>
 
-            <div class="section-kicker">KLUBBARNA</div>
-
-            <h2>Lagen</h2>
-
-            <p class="section-desc">Sex lag. En liga. En mästare.</p>
-
+        <div class="team-grid">
+          <div class="team-card" style="--team-color:#e60023">
+            <span class="team-badge">LR</span>
+            <div><strong>LA REMONTADA</strong><small>3 poäng</small></div>
           </div>
 
+          <div class="team-card" style="--team-color:#fff">
+            <span class="team-badge">BF</span>
+            <div><strong>BODA FC</strong><small>0 poäng</small></div>
+          </div>
+
+          <div class="team-card" style="--team-color:#247bff">
+            <span class="team-badge">IS</span>
+            <div><strong>IFK SJÖBO</strong><small>0 poäng</small></div>
+          </div>
+
+          <div class="team-card" style="--team-color:#20c878">
+            <span class="team-badge">MU</span>
+            <div><strong>MARDELLI UNITED</strong><small>0 poäng</small></div>
+          </div>
+
+          <div class="team-card" style="--team-color:#aaa">
+            <span class="team-badge">LF</span>
+            <div><strong>LALL FC</strong><small>0 poäng</small></div>
+          </div>
+
+          <div class="team-card" style="--team-color:#b65cff">
+            <span class="team-badge">TF</span>
+            <div><strong>TORTA FC</strong><small>0 poäng</small></div>
+          </div>
         </div>
-
-        <div class="teams-grid">
-
-          <article class="team-card" style="--team-color:#e60023">
-
-            <div class="team-card-top">
-
-              <div class="team-emblem">LR</div>
-
-              <span class="team-number">01 / 06</span>
-
-            </div>
-
-            <h3>LA REMONTADA</h3>
-
-            <p>Viskan Ligan</p>
-
-          </article>
-
-          <article class="team-card" style="--team-color:#f5f5f5">
-
-            <div class="team-card-top">
-
-              <div class="team-emblem">BF</div>
-
-              <span class="team-number">02 / 06</span>
-
-            </div>
-
-            <h3>BODA FC</h3>
-
-            <p>Viskan Ligan</p>
-
-          </article>
-
-          <article class="team-card" style="--team-color:#3988ff">
-
-            <div class="team-card-top">
-
-              <div class="team-emblem">IS</div>
-
-              <span class="team-number">03 / 06</span>
-
-            </div>
-
-            <h3>IFK SJÖBO</h3>
-
-            <p>Viskan Ligan</p>
-
-          </article>
-
-          <article class="team-card" style="--team-color:#30d875">
-
-            <div class="team-card-top">
-
-              <div class="team-emblem">MU</div>
-
-              <span class="team-number">04 / 06</span>
-
-            </div>
-
-            <h3>MARDELLI UNITED</h3>
-
-            <p>Viskan Ligan</p>
-
-          </article>
-
-          <article class="team-card" style="--team-color:#bdbdbd">
-
-            <div class="team-card-top">
-
-              <div class="team-emblem">LF</div>
-
-              <span class="team-number">05 / 06</span>
-
-            </div>
-
-            <h3>LALL FC</h3>
-
-            <p>Viskan Ligan</p>
-
-          </article>
-
-          <article class="team-card" style="--team-color:#b878ff">
-
-            <div class="team-card-top">
-
-              <div class="team-emblem">TF</div>
-
-              <span class="team-number">06 / 06</span>
-
-            </div>
-
-            <h3>TORTA FC</h3>
-
-            <p>Viskan Ligan</p>
-
-          </article>
-
-        </div>
-
       </section>
-
-      <!-- FOOTER -->
 
       <footer>
-
-        <div>VISKAN LIGAN <span>•</span> OFFICIELL LIGASIDA</div>
-
-        <div>FOTBOLL • GEMENSKAP • KONKURRENS</div>
-
+        <span>VISKAN LIGAN • OFFICIELL LIGASIDA</span>
+        <span>FÖR ATT SKAPA SAMHÄLLEN</span>
       </footer>
-
     </main>
-
   </div>
 
   <script>
+    const navLinks = document.querySelectorAll(".nav a");
+    const sections = document.querySelectorAll("main section[id]");
 
-    // Markera aktuell sektion i navigeringen.
-
-    const navLinks = [...document.querySelectorAll('nav a')];
-
-    const sections = [...document.querySelectorAll('main section')];
-
-    const observer = new IntersectionObserver(entries => {
-
-      entries.forEach(entry => {
-
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-
-          navLinks.forEach(link => {
-
+          navLinks.forEach((link) => {
             link.classList.toggle(
-
-              'active',
-
-              link.getAttribute('href') === '#' + entry.target.id
-
+              "active",
+              link.getAttribute("href") === "#" + entry.target.id
             );
-
           });
-
         }
-
       });
-
     }, {
-
-      rootMargin: '-20% 0px -65% 0px'
-
+      rootMargin: "-20% 0px -65% 0px"
     });
 
-    sections.forEach(section => observer.observe(section));
-
+    sections.forEach((section) => observer.observe(section));
   </script>
-
 </body>
-
 </html>
